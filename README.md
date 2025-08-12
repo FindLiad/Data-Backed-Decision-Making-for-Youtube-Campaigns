@@ -4,7 +4,7 @@
 📊 **Tableau dashboard + SQL data prep** to help marketing teams identify the most impactful UK YouTube channels for brand collaborations.
 
 - 🔗 **Live Dashboard:** [View on Tableau Public](https://public.tableau.com/app/profile/liad.mizrachi/viz/YoutubeVisualization_17550201203060/Dashboard1?publish=yes)
-- 🌐 **Project Page (themed):** https://findliad.github.io/Data-Backed-Decision-Making-for-Youtube-Campaigns
+- 🌐 **Project Page (themed):** [View on GitHub](https://github.com/FindLiad/Data-Backed-Decision-Making-for-Youtube-Campaigns)
 
 ## Summary
 This project rebuilds a YouTube analytics dashboard originally designed with Microsoft SQL Server & Power BI — but re-implemented entirely on macOS using **Azure Data Studio (SQL)** and **Tableau**.  
