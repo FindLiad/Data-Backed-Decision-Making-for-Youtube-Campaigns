@@ -1,4 +1,5 @@
 # Data-Backed Decision Making for YouTube Campaigns
+## By Liad Mizrachi
 
 📊 **Tableau dashboard + SQL data prep** to help marketing teams identify the most impactful UK YouTube channels for brand collaborations.
 
