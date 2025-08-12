@@ -7,8 +7,13 @@ title: Data-Backed Decision Making for YouTube Campaigns
 
 A marketer-facing dashboard to **identify high-ROI YouTube channels** for brand collaborations using clean, comparable metrics.
 
-- 🔗 **Live Dashboard (Tableau Public):** https://public.tableau.com/app/profile/liad.mizrachi/viz/YoutubeVisualization_17550201203060/Dashboard1?publish=yes  
-- 📦 **Repository:** https://github.com/FindLiad/Data-Backed-Decision-Making-for-Youtube-Campaigns
+- 🔗 **Live Dashboard (Tableau Public):** <p>
+  <a href="https://public.tableau.com/app/profile/liad.mizrachi/viz/YoutubeVisualization_17550201203060/Dashboard1?publish=yes">Live Dashboard</a>
+</p>
+
+- 📦 **Repository:** <p>
+  <a href="https://github.com/FindLiad/Data-Backed-Decision-Making-for-Youtube-Campaigns">GitHub Repo</a>
+</p>
 
 ---
 
@@ -36,13 +41,14 @@ I **rebuilt the entire workflow on macOS** using **Azure Data Studio (SQL)** and
 
 ---
 
-## Screenshots
-![Dashboard](Images/dashboard.png)
-*Primary Tableau dashboard.*
+## UI/UX
+- **Mock Up**
 
-![Mock](Images/dashboard_mock.png)
-*Initial concept mock and layout exploration.*
+[![Mock](Assets/Images/dashboard_mock.png)](Assets/Images/dashboard_mock.png)
 
+- **Final Interface**
+
+[![Dashboard](Assets/Images/dashboard.png)](Assets/Images/dashboard.png)
 ---
 
 ## Use Cases & Acceptance Criteria (from PRD)
