@@ -91,24 +91,32 @@
 }
 
 /* 4 buttons in a neat grid */
+/* Contact buttons grid */
 .author-card__links {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;   /* 2 per row */
   gap: 8px;
   margin-top: .8rem;
 }
 
+/* Contact buttons uniform sizing + centered text */
 .author-card__btn {
-  display: inline-block;
-  text-align: center;
-  padding: .48rem .5rem;
+  display: flex;                  /* flexbox centers content */
+  justify-content: center;
+  align-items: center;
+  height: 48px;                   /* fixed uniform height */
+  width: 100%;                    /* stretch to grid cell width */
+  padding: 0 12px;                /* equal horizontal padding */
   border-radius: 10px;
   background: #f6f8fa;
   color: #24292e;
   text-decoration: none;
   border: 1px solid #dfe2e6;
   font-size: .9rem;
+  font-weight: 500;
+  box-sizing: border-box;
 }
+
 .author-card__btn:hover {
   background: #fff;
   border-color: #cfd5db;
