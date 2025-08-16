@@ -94,7 +94,7 @@ This repo includes the **PRD**, reproducible SQL/data prep, the Tableau workbook
 - **Row/Column Count Check**  
 - **Type Validation** (ints, strings expected)  
 - **Duplicate Checks** on channel identifiers  
-- **Null / missing value scan**  
+- **Null / missing value scan**
 
 ---
 

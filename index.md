@@ -4,8 +4,8 @@ title: Data-Backed Decision Making for YouTube Campaigns
 ---
 
 {% comment %}
-This pulls README.md into the site so README is the single source of truth.
-The first H1 (# ...) is dropped to avoid duplicating the banner title.
+Render README.md so repo and site stay in sync.
+Drop the README's first H1 to avoid duplicating the banner title.
 {% endcomment %}
 
 {% capture readme %}{% include_relative README.md %}{% endcapture %}
