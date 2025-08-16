@@ -5,17 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ page.title | default: site.title }}</title>
 
-    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-    <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
+    <!-- Use absolute paths from the site root -->
+    <link rel="stylesheet" href="/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/css/style.css">
+    <link rel="stylesheet" href="/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/css/custom.css">
   </head>
   <body>
+    <!-- ===== Split Banner ===== -->
     <header class="hero-split">
+      <!-- Author Card -->
       <aside class="author-card">
         <div class="author-card__heading">About the Author</div>
-        <!-- use baseurl to guarantee the correct project path -->
+
+        <!-- Absolute path to your photo -->
         <img class="author-card__photo"
-             src="{{ site.baseurl }}/images/liad-mizrachi.jpg"
+             src="/Data-Backed-Decision-Making-for-Youtube-Campaigns/images/liad-mizrachi.jpg"
              alt="{{ site.author }}">
+
         <div class="author-card__name">{{ site.author }}</div>
         {% if site.author_title %}
           <div class="author-card__title">{{ site.author_title }}</div>
@@ -29,6 +34,7 @@
         </div>
       </aside>
 
+      <!-- Project Title + Tagline -->
       <section class="hero-main">
         <h1 class="hero-main__title">{{ site.title }}</h1>
         {% if site.description %}
@@ -45,8 +51,10 @@
       </section>
     </header>
 
+    <!-- ===== Main Content ===== -->
     <main id="content" class="main-content" role="main">
       {{ content }}
+
       <footer class="site-footer">
         {% if site.github.is_project_page %}
           <span class="site-footer-owner">
