@@ -38,7 +38,7 @@ This repo includes the **PRD**, reproducible SQL/data prep, the Tableau workbook
 
 ## UI/UX
 - **Mock Up**  
-[![Mock](/Data-Backed-Decision-Making-for-Youtube-Campaigns/images/dashboard_mock.png)](/Data-Backed-Decision-Making-for-Youtube-Campaigns/images/dashboard_mock.png)
+[![Mock](/Data-Backed-Decision-Making-for-Youtube-Campaigns/images/dashboard_mock.png)](/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/images/dashboard_mock.png)
 
 - **Final Interface**  
 [![Dashboard](/Data-Backed-Decision-Making-for-Youtube-Campaigns/images/dashboard.png)](/Data-Backed-Decision-Making-for-Youtube-Campaigns/images/dashboard.png)
