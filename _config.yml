@@ -2,6 +2,13 @@ title: "Data-Backed Decision Making for YouTube Campaigns"
 description: "Marketer-facing dashboard to pick high-ROI YouTube channel collabs."
 author: "Liad Mizrachi"
 
+author_title: "Senior Product Manager • AIS Data-Driven Solutions"
+author_photo: /assets/images/author.jpg
+author_links:
+  - {label: "LinkedIn", url: "https://www.linkedin.com/in/liadmizrachi/", icon: "🔗"}
+  - {label: "GitHub",   url: "https://github.com/FindLiad",            icon: "💻"}
+  - {label: "Email",    url: "FindLiad@Gmail.com",                icon: "✉️"}
+
 remote_theme: pages-themes/cayman@v0.2.0
 plugins:
   - jekyll-remote-theme
