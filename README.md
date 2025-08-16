@@ -12,6 +12,7 @@ A marketer-facing dashboard to **identify high-ROI YouTube channels** for brand 
 
 ## Summary
 A productized analytics workflow that lets marketing leaders **rank, screen, and shortlist** UK YouTube channels using **Subscribers, Total Views, Videos, Avg Views per Video, Engagement Ratio (proxy), and Views per Subscriber**.  
+
 The goal is a **transparent, reproducible, and explainable** way to pick creators for brand collaborations.
 
 <div align="right"><a href="#table-of-contents">↑ Back to top</a></div>
@@ -147,9 +148,9 @@ These create a **balanced scorecard**: reach (subs/views) × responsiveness (eng
 - **Final dataset:**  
   [/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/data/final_youtube_data.csv](/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/data/final_youtube_data.csv)
 - **Prep script:**  
-  [/Data-Backed-Decision-Making-for-Youtube-Campaigns/scripts/prep_youtube_uk.py](/Data-Backed-Decision-Making-for-Youtube-Campaigns/scripts/prep_youtube_uk.py)
+  [/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/scripts/prep_youtube_uk.py](/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/scripts/prep_youtube_uk.py)
 - **Tableau workbook:**  
-  [/Data-Backed-Decision-Making-for-Youtube-Campaigns/visualizations/Youtube_Visualization.twb](/Data-Backed-Decision-Making-for-Youtube-Campaigns/visualizations/Youtube_Visualization.twb)
+  [/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/visualizations/Youtube_Visualization.twb](/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/visualizations/Youtube_Visualization.twb)
 - **PRD:**  
   [/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/docs/Product_Requirements_Document.pdf](/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/docs/Product_Requirements_Document.pdf)
 
