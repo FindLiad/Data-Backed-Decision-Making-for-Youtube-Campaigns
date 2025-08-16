@@ -1,47 +1,54 @@
 <!doctype html>
 <html lang="en">
   <head>
-    {% include head-custom.html %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ page.title | default: site.title }}</title>
+
+    <!-- Theme + Custom CSS -->
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
     <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
   </head>
   <body>
-    <!-- Split Hero -->
+    <!-- ===== Split Banner ===== -->
     <header class="hero-split">
+      <!-- Author Card -->
       <aside class="author-card">
         <div class="author-card__heading">About the Author</div>
-        <img class="author-card__photo" src="{{ site.author_photo | default: '/assets/images/author.jpg' | relative_url }}" alt="{{ site.author }}">
+        <img class="author-card__photo"
+             src="{{ '/assets/images/liad-mizrachi.jpg' | relative_url }}"
+             alt="{{ site.author }}">
         <div class="author-card__name">{{ site.author }}</div>
-        {% if site.author_title %}<div class="author-card__title">{{ site.author_title }}</div>{% endif %}
+        {% if site.author_title %}
+          <div class="author-card__title">{{ site.author_title }}</div>
+        {% endif %}
         <div class="author-card__links">
           {% for l in site.author_links %}
             <a class="author-card__btn"
-   href="{{ l.url | escape }}"
-   target="_blank" rel="noopener noreferrer">
-  {{ l.icon }} {{ l.label }}
-</a>
-
+               href="{{ l.url | escape }}"
+               target="_blank" rel="noopener noreferrer">
+              {{ l.icon }} {{ l.label }}
+            </a>
           {% endfor %}
         </div>
       </aside>
 
+      <!-- Project Title + Tagline -->
       <section class="hero-main">
         <h1 class="hero-main__title">{{ site.title }}</h1>
         {% if site.description %}
           <p class="hero-main__tagline">{{ site.description }}</p>
         {% endif %}
         {% if site.github.repository_url %}
-          <a class="btn" href="{{ site.github.repository_url }}">View this project repo on GitHub</a>
+          <a class="btn" href="{{ site.github.repository_url }}">View on GitHub</a>
         {% endif %}
       </section>
     </header>
 
-    <!-- Main content -->
+    <!-- ===== Main Content ===== -->
     <main id="content" class="main-content" role="main">
       {{ content }}
+
       <footer class="site-footer">
         {% if site.github.is_project_page %}
           <span class="site-footer-owner">
