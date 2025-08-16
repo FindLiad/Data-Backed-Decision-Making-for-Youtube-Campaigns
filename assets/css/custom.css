@@ -291,3 +291,25 @@ pre, code {
     background: var(--tile-bg-hover);
   }
 }
+
+/* === Force beige contact tiles on all devices (light + dark) === */
+.author-card__btn{
+  background-color: #e5d2c3 !important;  /* slightly dark beige */
+  border-color: #d8c2b4 !important;
+  color: #2b211d !important;              /* dark coffee text for contrast */
+}
+.author-card__btn:hover{
+  background-color: #dec9b8 !important;   /* hover shade */
+}
+
+/* Keep the same beige in dark mode (override dark scheme) */
+@media (prefers-color-scheme: dark){
+  .author-card__btn{
+    background-color: #e5d2c3 !important;
+    border-color: #d8c2b4 !important;
+    color: #2b211d !important;
+  }
+  .author-card__btn:hover{
+    background-color: #dec9b8 !important;
+  }
+}
