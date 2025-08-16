@@ -18,7 +18,12 @@
         {% if site.author_title %}<div class="author-card__title">{{ site.author_title }}</div>{% endif %}
         <div class="author-card__links">
           {% for l in site.author_links %}
-            <a class="author-card__btn" href="{{ l.url }}" target="_blank" rel="noopener">{{ l.icon }} {{ l.label }}</a>
+            <a class="author-card__btn"
+   href="{{ l.url | escape }}"
+   target="_blank" rel="noopener noreferrer">
+  {{ l.icon }} {{ l.label }}
+</a>
+
           {% endfor %}
         </div>
       </aside>

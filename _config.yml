@@ -13,10 +13,10 @@ author_links:
     url: "https://github.com/FindLiad"
     icon: "📦"
   - label: "LinkedIn"
-    url: "https://www.linkedin.com/in/liadmizrachi/"
+    url: "https://www.linkedin.com/in/liad-mizrachi/"
     icon: "🔗"
   - label: "Email"
-    url: "FindLiad@Gmail.com"
+    url: "mailto:FindLiad@Gmail.com"
     icon: "✉️"
 
 remote_theme: "pages-themes/cayman@v0.2.0"
