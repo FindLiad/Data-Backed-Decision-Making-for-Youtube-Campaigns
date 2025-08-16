@@ -11,35 +11,117 @@ A marketer-facing dashboard to **identify high-ROI YouTube channels** for brand 
 ---
 
 ## Summary
-A productized analytics workflow that lets marketing leaders **rank, screen, and shortlist** UK YouTube channels using **Subscribers, Videos, Views, Avg Views, Engagement Ratio, and Views per Subscriber**.  
+A productized analytics workflow that lets marketing leaders **rank, screen, and shortlist** UK YouTube channels using **Subscribers, Total Views, Videos, Avg Views per Video, Engagement Ratio (proxy), and Views per Subscriber**.  
+The goal is a **transparent, reproducible, and explainable** way to pick creators for brand collaborations.
 
-Built to replace ad-hoc searches and expensive third-party lists with **transparent, reproducible, and explainable** decision criteria.
-
----
-
-## Overview (PM framing)
-The original tutorial shipped a similar dashboard with **Microsoft SQL Server + Power BI**.  
-
-I **rebuilt the entire workflow on macOS** using **Azure Data Studio (SQL)** and **Tableau**, keeping the core idea but emphasizing **product requirements, acceptance criteria, data quality checks, and success metrics**.  
-
-This repo includes the **PRD**, reproducible SQL/data prep, the Tableau workbook, and final assets, so the decision logic is **auditable and maintainable**.
-
-- **Source → Transform → Validate → Visualize → Decide**
-- Clear **“why”** (Problem & Success Criteria), **“what”** (Use Cases & AC), and **“how”** (Data, Checks, Scripts, Viz).
+<div align="right"><a href="#table-of-contents">↑ Back to top</a></div>
 
 ---
 
-## Key Features
-- **Top Channel Ranking:** Sort and filter by Subscribers, Videos, Views, Avg Views/Video, Engagement Ratio, Views per Subscriber.  
-- **KPI Tiles:** At-a-glance metrics (Avg Views per Video, Engagement Ratio, Views per Subscriber).  
-- **Top-N Controls:** Show Top 10 / Top 20 channels for focused evaluation.  
-- **Treemap & Bars:** Visual dominance and distribution (long-tail vs. head creators).  
-- **Shortlisting Workflow:** Screen → compare → annotate candidates for **campaign planning**.  
-- **Data Quality Guardrails:** Row/column counts, types, and duplicate checks baked into prep.
+## Table of Contents
+- [Objective & Success Criteria](#objective--success-criteria)
+- [What I Built & Why](#what-i-built--why)
+- [End-to-End Walkthrough](#end-to-end-walkthrough)
+  - [1) Data In](#1-data-in)
+  - [2) Clean & Normalize (Python)](#2-clean--normalize-python)
+  - [3) Guardrails (Data Quality Checks)](#3-guardrails-data-quality-checks)
+  - [4) Derive Metrics](#4-derive-metrics)
+  - [5) Visualize in Tableau](#5-visualize-in-tableau)
+  - [6) Publish & Share](#6-publish--share)
+- [Design Notes](#design-notes)
+- [Results (Screenshots)](#results-screenshots)
+- [Files & Folders](#files--folders)
+- [How to Reproduce](#how-to-reproduce)
+- [Limitations & Next Steps](#limitations--next-steps)
+- [Credits](#credits)
 
 ---
 
-## UI/UX
+## Objective & Success Criteria
+**Problem:** Scouting YouTube creators is slow and subjective.  
+**Objective:** Ship a repeatable workflow that surfaces high-potential UK channels for brand collabs.
+
+**Success Criteria**
+1. Rank channels by comparable KPIs (reach, consistency, responsiveness).
+2. Explain *why* a channel is shortlisted (transparent inputs).
+3. Refresh quickly when new data arrives.
+
+<div align="right"><a href="#table-of-contents">↑ Back to top</a></div>
+
+---
+
+## What I Built & Why
+- A **single CSV-based pipeline** (no databases to set up).  
+- A small **Python prep script** to clean/normalize inputs and write a **final CSV** for visualization.  
+- A **Tableau dashboard** that surfaces top channels across KPIs with simple, defensible calculations.  
+- A **GitHub Pages site** (this page) that documents assumptions, steps, and outcomes.
+
+**Why this approach?** It’s **fast, portable, and auditable**—teams can open the script, CSVs, and workbook to understand exactly how rankings are produced.
+
+<div align="right"><a href="#table-of-contents">↑ Back to top</a></div>
+
+---
+
+## End-to-End Walkthrough
+
+### 1) Data In
+- **Raw input:** `/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/data/raw_youtube_data.csv`  
+  Columns of interest: `channel_name`, `subscribers`, `total_views`, `videos` (+ optional engagement fields if available).
+
+### 2) Clean & Normalize (Python)
+- Script: `/Data-Backed-Decision-Making-for-Youtube-Campaigns/scripts/prep_youtube_uk.py`  
+- Output: `/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/data/final_youtube_data.csv`
+
+**What the script does (at a glance):**
+- trims `channel_name`
+- coerces numeric types (`subscribers`, `total_views`, `videos`)
+- drops unused columns
+- handles empties/nulls with simple rules (drop or fill where safe)
+- writes **final_youtube_data.csv**
+
+### 3) Guardrails (Data Quality Checks)
+Before visualizing, I run a few quick checks (baked into the script/notebook or run ad-hoc):
+- **Row count** — expected volume present  
+- **Column & type sanity** — integers where expected, text for names  
+- **Duplicates** — no duplicate `channel_name` rows
+
+### 4) Derive Metrics
+All metrics are either precomputed in Python or calculated in Tableau:
+
+- **Avg Views per Video** = `total_views / videos` (0-safe)  
+- **Views per Subscriber** = `total_views / subscribers` (0-safe)  
+- **Engagement Ratio (proxy)** = based on available fields; if likes/comments aren’t present, omit or mark as N/A.
+
+These create a **balanced scorecard**: reach (subs/views) × responsiveness (engagement/efficiency).
+
+### 5) Visualize in Tableau
+- Workbook: `/Data-Backed-Decision-Making-for-Youtube-Campaigns/visualizations/Youtube_Visualization.twb`  
+- Data source: `/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/data/final_youtube_data.csv`
+
+**Dashboard Components**
+- Top-N lists by each KPI (subscribers, views, videos, avg views/video, views/subscriber).  
+- KPI tiles for quick scanning.  
+- Treemap/bars for distribution and dominance.  
+- Controls to toggle Top 10/Top 20, simple filtering.
+
+### 6) Publish & Share
+- Published to **Tableau Public**, linked at the top of this page.  
+- Repo includes raw/clean CSVs, the script, the workbook, and this write-up so the logic is **inspectable and reproducible**.
+
+<div align="right"><a href="#table-of-contents">↑ Back to top</a></div>
+
+---
+
+## Design Notes
+- **Why these KPIs?** They balance *scale* (subs/views) and *performance* (avg views, views/sub).  
+- **Why CSV pipeline?** Lightweight, easy for non-engineers, zero infra.  
+- **Why Tableau?** Fast iteration and simple publishing for stakeholders.
+
+<div align="right"><a href="#table-of-contents">↑ Back to top</a></div>
+
+---
+
+## Results (Screenshots)
 
 <figure class="centered-figure">
   <a href="/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/images/dashboard_mock.png" target="_blank" rel="noopener">
@@ -55,16 +137,49 @@ This repo includes the **PRD**, reproducible SQL/data prep, the Tableau workbook
   <figcaption>Final Interface</figcaption>
 </figure>
 
+<div align="right"><a href="#table-of-contents">↑ Back to top</a></div>
+
 ---
 
-## Use Cases & Acceptance Criteria (from PRD)
-**Use Case 1 — Identify creators to collaborate with**  
-- _AC:_ List top channels by the metrics above, allow simple sorting/filtering, and use the most recent dataset.
+## Files & Folders
+- **Raw data:**  
+  [/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/data/raw_youtube_data.csv](/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/data/raw_youtube_data.csv)
+- **Final dataset:**  
+  [/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/data/final_youtube_data.csv](/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/data/final_youtube_data.csv)
+- **Prep script:**  
+  [/Data-Backed-Decision-Making-for-Youtube-Campaigns/scripts/prep_youtube_uk.py](/Data-Backed-Decision-Making-for-Youtube-Campaigns/scripts/prep_youtube_uk.py)
+- **Tableau workbook:**  
+  [/Data-Backed-Decision-Making-for-Youtube-Campaigns/visualizations/Youtube_Visualization.twb](/Data-Backed-Decision-Making-for-Youtube-Campaigns/visualizations/Youtube_Visualization.twb)
+- **PRD:**  
+  [/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/docs/Product_Requirements_Document.pdf](/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/docs/Product_Requirements_Document.pdf)
 
-**Use Case 2 — Assess campaign potential**  
-- _AC:_ Provide decision inputs for campaign types (product placement, sponsored series, influencer content) via **reach (subs/views)**, **engagement signals**, and **estimated impact**.
+<div align="right"><a href="#table-of-contents">↑ Back to top</a></div>
 
-**Success Criteria**  
-- VP of Marketing can quickly:  
-  1) Identify top candidates,  
-  2) Understand expected reach/engagement trad
+---
+
+## How to Reproduce
+1. **Clone** this repo.  
+2. Run `scripts/prep_youtube_uk.py` (writes `assets/data/final_youtube_data.csv`).  
+3. Open `visualizations/Youtube_Visualization.twb` in **Tableau** and point it at `assets/data/final_youtube_data.csv`.  
+4. Explore the dashboard; publish to Tableau Public if desired.  
+5. To refresh later: replace `raw_youtube_data.csv` → re-run script → open workbook (data updates).
+
+<div align="right"><a href="#table-of-contents">↑ Back to top</a></div>
+
+---
+
+## Limitations & Next Steps
+- Engagement details (likes/comments) may be missing; **Engagement Ratio** is a placeholder when fields aren’t available.  
+- Add **recency weighting** or **growth trends** (subs/view velocity).  
+- Introduce **cost data** to estimate **ROI** (views × conv. rate × margin − fee).  
+- Optional: creator **categories/verticals** to filter comparisons.
+
+<div align="right"><a href="#table-of-contents">↑ Back to top</a></div>
+
+---
+
+## Credits
+Concept inspired by a public learning project; this version uses a **CSV-only pipeline** with **Python + Tableau**, documented for product stakeholders.  
+© Liad Mizrachi.
+
+<div align="right"><a href="#table-of-contents">↑ Back to top</a></div>
