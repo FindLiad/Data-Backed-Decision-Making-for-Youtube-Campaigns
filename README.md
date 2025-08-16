@@ -1,13 +1,3 @@
-# Data-Backed Decision Making for YouTube Campaigns
-
-- 🔗 **Live Dashboard (Tableau Public):**  
-  [Live Dashboard](https://public.tableau.com/app/profile/liad.mizrachi/viz/YoutubeVisualization_17550201203060/Dashboard1?publish=yes)
-
-- 📦 **Repository:**  
-  [GitHub Repo](https://github.com/FindLiad/Data-Backed-Decision-Making-for-Youtube-Campaigns)
-
----
-
 ## Summary
 A productized analytics workflow that lets marketing leaders **rank, screen, and shortlist** UK YouTube channels using **Subscribers, Videos, Views, Avg Views, Engagement Ratio, and Views per Subscriber**.  
 Built to replace ad-hoc searches and expensive third-party lists with **transparent, reproducible, and explainable** decision criteria.
@@ -41,7 +31,7 @@ This repo includes the **PRD**, reproducible SQL/data prep, the Tableau workbook
 
 - **Final Interface**
 
-[![Dashboard](assets/images/dashboard.png)](assets/images/dashboard.png)
+[![Dashboard](images/dashboard.png)](images/dashboard.png)
 
 ---
 
