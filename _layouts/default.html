@@ -12,8 +12,9 @@
     <header class="hero-split">
       <aside class="author-card">
         <div class="author-card__heading">About the Author</div>
+        <!-- use baseurl to guarantee the correct project path -->
         <img class="author-card__photo"
-             src="{{ 'images/liad-mizrachi.jpg' | relative_url }}"
+             src="{{ site.baseurl }}/images/liad-mizrachi.jpg"
              alt="{{ site.author }}">
         <div class="author-card__name">{{ site.author }}</div>
         {% if site.author_title %}
@@ -33,7 +34,6 @@
         {% if site.description %}
           <p class="hero-main__tagline">{{ site.description }}</p>
         {% endif %}
-
         <div class="hero-actions">
           {% if site.live_dashboard_url %}
             <a class="btn" href="{{ site.live_dashboard_url }}" target="_blank" rel="noopener">View Live Dashboard</a>

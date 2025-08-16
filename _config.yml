@@ -2,7 +2,7 @@ title: "Data-Backed Decision Making for YouTube Campaigns"
 description: "Marketer-facing dashboard to pick high-ROI YouTube channel collabs."
 author: "Liad Mizrachi"
 
-# IMPORTANT: set baseurl to your repo name (with leading slash)
+# <<< IMPORTANT: this must match the repo name (case-sensitive) >>>
 baseurl: "/Data-Backed-Decision-Making-for-Youtube-Campaigns"
 
 author_title: "Senior Product Manager • AI Data-Driven Solutions"
@@ -22,14 +22,12 @@ author_links:
     url: "mailto:Liad%20Mizrachi%20<FindLiad@gmail.com>"
     icon: "✉️"
 
-# Hero second button
 live_dashboard_url: "https://public.tableau.com/app/profile/liad.mizrachi/viz/YoutubeVisualization_17550201203060/Dashboard1?publish=yes"
 
 remote_theme: "pages-themes/cayman@v0.2.0"
 plugins:
   - jekyll-remote-theme
 
-# We render README via index.md (do not auto-use README as index)
 readme_index:
   enabled: false
 
