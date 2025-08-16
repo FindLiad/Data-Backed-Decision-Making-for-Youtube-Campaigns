@@ -52,11 +52,11 @@ I **rebuilt the entire workflow on macOS** using **Azure Data Studio (SQL)** and
 ## UI/UX
 - **Mock Up**
 
-[![Mock](Assets/Images/dashboard_mock.png)](Assets/Images/dashboard_mock.png)
+[![Mock](assets/images/dashboard_mock.png)](assets/images/dashboard_mock.png)
 
 - **Final Interface**
 
-[![Dashboard](Assets/Images/dashboard.png)](Assets/Images/dashboard.png)
+[![Dashboard](assets/images/dashboard.png)](assets/images/dashboard.png)
 ---
 
 ## Use Cases & Acceptance Criteria (from PRD)
@@ -75,9 +75,9 @@ I **rebuilt the entire workflow on macOS** using **Azure Data Studio (SQL)** and
 ---
 
 ## Data & Files
-- **Raw data:** [`Assets/Data/raw_youtube_data.csv`](Assets/Data/raw_youtube_data.csv)  
-- **Final dataset:** [`Assets/Data/final_youtube_data.csv`](Assets/Data/final_youtube_data.csv)  
-- **SQLite DB (optional):** [`Assets/Data/youtube.db`](Assets/Data/youtube.db)  
+- **Raw data:** [`assets/Data/raw_youtube_data.csv`](assets/Data/raw_youtube_data.csv)  
+- **Final dataset:** [`assets/Data/final_youtube_data.csv`](assets/Data/final_youtube_data.csv)  
+- **SQLite DB (optional):** [`assets/Data/youtube.db`](assets/Data/youtube.db)  
 - **Tableau workbook:** [`Visualizations/Youtube_Visualization.twb`](Visualizations/Youtube_Visualization.twb)  
 - **Script (prep):** [`Scripts/prep_youtube_uk.py`](Scripts/prep_youtube_uk.py)  
 - **PRD (PDF):** [`Docs/Product_Requirements_Document.pdf`](Docs/Product_Requirements_Document.pdf)
