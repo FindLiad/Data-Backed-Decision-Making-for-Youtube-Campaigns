@@ -258,3 +258,36 @@ pre, code {
   }
 }
 
+/* === Contact tiles: slightly dark beige (light + dark mode) === */
+:root{
+  --tile-bg:        #e5d2c3;  /* slightly dark beige */
+  --tile-bg-hover:  #dec9b8;  /* hover shade */
+  --tile-border:    #d8c2b4;  /* warm border */
+}
+
+/* Light mode tiles */
+.author-card__btn{
+  background: var(--tile-bg);
+  border-color: var(--tile-border);
+  color: var(--text);
+}
+.author-card__btn:hover{
+  background: var(--tile-bg-hover);
+}
+
+/* Dark mode equivalents for good contrast */
+@media (prefers-color-scheme: dark){
+  :root{
+    --tile-bg:       #3a2f2a;  /* warm deep beige-brown */
+    --tile-bg-hover: #473a34;  /* slightly brighter on hover */
+    --tile-border:   #2c241f;
+  }
+  .author-card__btn{
+    background: var(--tile-bg);
+    border-color: var(--tile-border);
+    color: var(--text);
+  }
+  .author-card__btn:hover{
+    background: var(--tile-bg-hover);
+  }
+}
