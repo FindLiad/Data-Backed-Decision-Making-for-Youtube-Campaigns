@@ -66,3 +66,24 @@
   flex-wrap:wrap;
   justify-content:center;
 }
+
+/* Centered figures for screenshots in README */
+.centered-figure {
+  margin: 0 auto 28px;       /* center + spacing */
+  text-align: center;
+  max-width: 980px;           /* keep them from getting too wide */
+}
+.centered-figure img {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid #dfe2e6;  /* subtle border */
+  box-shadow: 0 8px 24px rgba(0,0,0,.12);
+  background: #fff;
+}
+.centered-figure figcaption {
+  margin-top: 8px;
+  font-weight: 600;
+  color: #2f363d;
+}

@@ -37,15 +37,20 @@ This repo includes the **PRD**, reproducible SQL/data prep, the Tableau workbook
 ---
 
 ## UI/UX
-- **Mock Up**  
-  <a href="/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/images/dashboard_mock.png" target="_blank" rel="noopener">
-    <img src="/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/images/dashboard_mock.png" alt="Mockup">
-  </a>
 
-- **Final Interface**  
-  <a href="/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/images/dashboard.png" target="_blank" rel="noopener">
-    <img src="/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/images/dashboard.png" alt="Dashboard">
+<figure class="centered-figure">
+  <a href="/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/images/dashboard_mock.png" target="_blank" rel="noopener">
+    <img src="/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/images/dashboard_mock.png" alt="Mock Up">
   </a>
+  <figcaption>Mock Up</figcaption>
+</figure>
+
+<figure class="centered-figure">
+  <a href="/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/images/dashboard.png" target="_blank" rel="noopener">
+    <img src="/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/images/dashboard.png" alt="Final Interface">
+  </a>
+  <figcaption>Final Interface</figcaption>
+</figure>
 
 ---
 
