@@ -12,13 +12,16 @@ A marketer-facing dashboard to **identify high-ROI YouTube channels** for brand 
 
 ## Summary
 A productized analytics workflow that lets marketing leaders **rank, screen, and shortlist** UK YouTube channels using **Subscribers, Videos, Views, Avg Views, Engagement Ratio, and Views per Subscriber**.  
+
 Built to replace ad-hoc searches and expensive third-party lists with **transparent, reproducible, and explainable** decision criteria.
 
 ---
 
 ## Overview (PM framing)
 The original tutorial shipped a similar dashboard with **Microsoft SQL Server + Power BI**.  
+
 I **rebuilt the entire workflow on macOS** using **Azure Data Studio (SQL)** and **Tableau**, keeping the core idea but emphasizing **product requirements, acceptance criteria, data quality checks, and success metrics**.  
+
 This repo includes the **PRD**, reproducible SQL/data prep, the Tableau workbook, and final assets, so the decision logic is **auditable and maintainable**.
 
 - **Source → Transform → Validate → Visualize → Decide**
