@@ -5,21 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ page.title | default: site.title }}</title>
 
-    <!-- Use absolute paths from the site root -->
+    <!-- Absolute paths from your Pages site root -->
     <link rel="stylesheet" href="/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/css/style.css">
     <link rel="stylesheet" href="/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/css/custom.css">
   </head>
   <body>
-    <!-- ===== Split Banner ===== -->
     <header class="hero-split">
-      <!-- Author Card -->
       <aside class="author-card">
         <div class="author-card__heading">About the Author</div>
 
-        <!-- Absolute path to your photo -->
-        <img class="author-card__photo"
-             src="/Data-Backed-Decision-Making-for-Youtube-Campaigns/images/liad-mizrachi.jpg"
-             alt="{{ site.author }}">
+        <!-- Clickable profile photo (opens full size in new tab) -->
+        <a href="{{ site.author_photo }}" target="_blank" rel="noopener">
+          <img class="author-card__photo"
+               src="{{ site.author_photo }}"
+               alt="{{ site.author }}">
+        </a>
 
         <div class="author-card__name">{{ site.author }}</div>
         {% if site.author_title %}
@@ -34,7 +34,6 @@
         </div>
       </aside>
 
-      <!-- Project Title + Tagline -->
       <section class="hero-main">
         <h1 class="hero-main__title">{{ site.title }}</h1>
         {% if site.description %}
@@ -45,13 +44,12 @@
             <a class="btn" href="{{ site.live_dashboard_url }}" target="_blank" rel="noopener">View Live Dashboard</a>
           {% endif %}
           {% if site.github.repository_url %}
-            <a class="btn" href="{{ site.github.repository_url }}">View on GitHub</a>
+            <a class="btn" href="{{ site.github.repository_url }}" target="_blank" rel="noopener">View on GitHub</a>
           {% endif %}
         </div>
       </section>
     </header>
 
-    <!-- ===== Main Content ===== -->
     <main id="content" class="main-content" role="main">
       {{ content }}
 

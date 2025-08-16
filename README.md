@@ -38,10 +38,14 @@ This repo includes the **PRD**, reproducible SQL/data prep, the Tableau workbook
 
 ## UI/UX
 - **Mock Up**  
-[![Mock](/Data-Backed-Decision-Making-for-Youtube-Campaigns/images/dashboard_mock.png)](/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/images/dashboard_mock.png)
+  <a href="/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/images/dashboard_mock.png" target="_blank" rel="noopener">
+    <img src="/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/images/dashboard_mock.png" alt="Mockup">
+  </a>
 
 - **Final Interface**  
-[![Dashboard](/Data-Backed-Decision-Making-for-Youtube-Campaigns/images/dashboard.png)](/Data-Backed-Decision-Making-for-Youtube-Campaigns/images/dashboard.png)
+  <a href="/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/images/dashboard.png" target="_blank" rel="noopener">
+    <img src="/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/images/dashboard.png" alt="Dashboard">
+  </a>
 
 ---
 
@@ -55,44 +59,4 @@ This repo includes the **PRD**, reproducible SQL/data prep, the Tableau workbook
 **Success Criteria**  
 - VP of Marketing can quickly:  
   1) Identify top candidates,  
-  2) Understand expected reach/engagement tradeoffs,  
-  3) Make **defensible, data-backed** collaboration choices.
-
----
-
-## Data & Files
-- **Raw data:**  
-  [/Data-Backed-Decision-Making-for-Youtube-Campaigns/data/raw_youtube_data.csv](/Data-Backed-Decision-Making-for-Youtube-Campaigns/data/raw_youtube_data.csv)
-
-- **Final dataset:**  
-  [/Data-Backed-Decision-Making-for-Youtube-Campaigns/data/final_youtube_data.csv](/Data-Backed-Decision-Making-for-Youtube-Campaigns/data/final_youtube_data.csv)
-
-- **SQLite DB (optional):**  
-  [/Data-Backed-Decision-Making-for-Youtube-Campaigns/data/youtube.db](/Data-Backed-Decision-Making-for-Youtube-Campaigns/data/youtube.db)
-
-- **Tableau workbook:**  
-  [/Data-Backed-Decision-Making-for-Youtube-Campaigns/visualizations/Youtube_Visualization.twb](/Data-Backed-Decision-Making-for-Youtube-Campaigns/visualizations/Youtube_Visualization.twb)
-
-- **Script (prep):**  
-  [/Data-Backed-Decision-Making-for-Youtube-Campaigns/scripts/prep_youtube_uk.py](/Data-Backed-Decision-Making-for-Youtube-Campaigns/scripts/prep_youtube_uk.py)
-
-- **PRD (PDF):**  
-  [/Data-Backed-Decision-Making-for-Youtube-Campaigns/docs/Product_Requirements_Document.pdf](/Data-Backed-Decision-Making-for-Youtube-Campaigns/docs/Product_Requirements_Document.pdf)
-
----
-
-## How to Run (Reproduce Locally)
-1. **Clone** this repo.  
-2. Open SQL scripts / data in **Azure Data Studio** (or your SQL tool of choice).  
-3. Use `final_youtube_data.csv` as your Tableau source (or connect to `youtube.db`).  
-4. Open `visualizations/Youtube_Visualization.twb` in **Tableau**.  
-5. (Optional) Publish to **Tableau Public**, then set the dashboard link above.
-
----
-
-## Decision Inputs (Explained)
-- **Avg Views per Video** — recency-adjusted performance proxy.  
-- **Engagement Ratio** — comments/likes/views to gauge audience responsiveness.  
-- **Views per Subscriber** — measures pull beyond base audience.  
-- **Volume (Videos)** — throughput and consistency.  
-- **Reach (Subscribers, Total Views)** — upper bound on campaign awareness.
+  2) Understand expected reach/engagement trad
