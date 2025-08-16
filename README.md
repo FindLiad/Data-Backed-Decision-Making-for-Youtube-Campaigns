@@ -41,7 +41,7 @@ This repo includes the **PRD**, reproducible SQL/data prep, the Tableau workbook
 
 - **Final Interface**
 
-[![Dashboard](images/dashboard.png)](images/dashboard.png)
+[![Dashboard](assets/images/dashboard.png)](assets/images/dashboard.png)
 
 ---
 
