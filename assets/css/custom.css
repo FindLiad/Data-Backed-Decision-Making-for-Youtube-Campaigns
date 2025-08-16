@@ -60,3 +60,9 @@
   .author-card{ order:1 }
   .hero-main{ order:2; padding:8px 8px 16px }
 }
+.hero-actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  justify-content:center;
+}

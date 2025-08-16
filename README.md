@@ -1,7 +1,5 @@
 # Data-Backed Decision Making for YouTube Campaigns
 
-A marketer-facing dashboard to **identify high-ROI YouTube channels** for brand collaborations using clean, comparable metrics.
-
 - 🔗 **Live Dashboard (Tableau Public):**  
   [Live Dashboard](https://public.tableau.com/app/profile/liad.mizrachi/viz/YoutubeVisualization_17550201203060/Dashboard1?publish=yes)
 

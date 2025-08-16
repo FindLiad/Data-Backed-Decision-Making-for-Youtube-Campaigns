@@ -4,11 +4,16 @@ title: Data-Backed Decision Making for YouTube Campaigns
 ---
 
 {% comment %}
-Capture README, convert to HTML with markdownify, then wrap for styling.
-This avoids the "raw markdown showing" issue you saw.
+Render README.md but drop everything before the first "## Summary".
+This avoids the intro paragraph and the two bullets under the banner.
 {% endcomment %}
 
 {% capture readme_raw %}{% include_relative README.md %}{% endcapture %}
-<div class="readme-wrap">
-{{ readme_raw | markdownify }}
-</div>
+{% assign split_token = '## Summary' %}
+{% assign parts = readme_raw | split: split_token %}
+{% if parts.size > 1 %}
+  {% capture after %}{{ split_token }}{{ parts[1] }}{% endcapture %}
+  {{ after | markdownify }}
+{% else %}
+  {{ readme_raw | markdownify }}
+{% endif %}
