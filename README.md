@@ -39,11 +39,11 @@ This repo includes the **PRD**, reproducible SQL/data prep, the Tableau workbook
 ## UI/UX
 - **Mock Up**
 
-[![Mock](/images/dashboard_mock.png)](/images/dashboard_mock.png)
+[![Mock](images/dashboard_mock.png)](images/dashboard_mock.png)
 
 - **Final Interface**
 
-[![Dashboard](/images/dashboard.png)](/images/dashboard.png)
+[![Dashboard](images/dashboard.png)](images/dashboard.png)
 
 ---
 
@@ -63,12 +63,12 @@ This repo includes the **PRD**, reproducible SQL/data prep, the Tableau workbook
 ---
 
 ## Data & Files
-- **Raw data:** [`/data/raw_youtube_data.csv`](/data/raw_youtube_data.csv)  
-- **Final dataset:** [`/data/final_youtube_data.csv`](/data/final_youtube_data.csv)  
-- **SQLite DB (optional):** [`/data/youtube.db`](/data/youtube.db)  
-- **Tableau workbook:** [`/visualizations/Youtube_Visualization.twb`](/visualizations/Youtube_Visualization.twb)  
-- **Script (prep):** [`/scripts/prep_youtube_uk.py`](/scripts/prep_youtube_uk.py)  
-- **PRD (PDF):** [`/docs/Product_Requirements_Document.pdf`](/docs/Product_Requirements_Document.pdf)
+- **Raw data:** [`data/raw_youtube_data.csv`](data/raw_youtube_data.csv)  
+- **Final dataset:** [`data/final_youtube_data.csv`](data/final_youtube_data.csv)  
+- **SQLite DB (optional):** [`data/youtube.db`](data/youtube.db)  
+- **Tableau workbook:** [`visualizations/Youtube_Visualization.twb`](visualizations/Youtube_Visualization.twb)  
+- **Script (prep):** [`scripts/prep_youtube_uk.py`](scripts/prep_youtube_uk.py)  
+- **PRD (PDF):** [`docs/Product_Requirements_Document.pdf`](docs/Product_Requirements_Document.pdf)
 
 ---
 

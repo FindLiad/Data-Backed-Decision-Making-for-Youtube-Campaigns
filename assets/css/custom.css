@@ -18,27 +18,9 @@
   text-align: center;
   padding: 24px;
 }
-.hero-main__title {
-  font-size: 2.2rem;
-  margin: 0 0 .25rem;
-  font-weight: 800;
-  letter-spacing: .2px;
-}
-.hero-main__tagline {
-  opacity: .9;
-  max-width: 720px;
-  margin: .25rem 0 1rem;
-}
-.btn {
-  display: inline-block;
-  padding: .6rem 1rem;
-  border-radius: 8px;
-  background: #fff;
-  color: #155799;
-  text-decoration: none;
-  border: 0;
-  font-weight: 700;
-}
+.hero-main__title { font-size: 2.2rem; margin: 0 0 .25rem; font-weight: 800; letter-spacing: .2px; }
+.hero-main__tagline { opacity: .9; max-width: 720px; margin: .25rem 0 1rem; }
+.btn { display: inline-block; padding: .6rem 1rem; border-radius: 8px; background: #fff; color: #155799; text-decoration: none; border: 0; font-weight: 700; }
 .btn:hover { filter: brightness(1.05) }
 
 /* ===== Left side author card ===== */
@@ -54,54 +36,27 @@
   box-shadow:0 6px 18px rgba(0,0,0,.12);
   border:1px solid #e3e6ea;
 }
-.author-card__heading{
-  text-align:center;
-  font-weight:900;
-  font-size:1.3rem;
-  letter-spacing:.3px;
-  margin-bottom:.6rem;
-}
-.author-card__photo{width:100%; border-radius:10px; display:block;}
-.author-card__name{
-  font-weight:800;
-  font-size:1rem;
-  margin-top:.6rem;
-  text-align:center;
-}
-.author-card__title{
-  font-size:.9rem;color:#586069;line-height:1.2;margin-top:.1rem;text-align:center;
-}
+.author-card__heading{ text-align:center; font-weight:900; font-size:1.3rem; letter-spacing:.3px; margin-bottom:.6rem; }
+.author-card__photo{ width:100%; border-radius:10px; display:block; }
+.author-card__name{ font-weight:800; font-size:1rem; margin-top:.6rem; text-align:center; }
+.author-card__title{ font-size:.9rem; color:#586069; line-height:1.2; margin-top:.1rem; text-align:center; }
 
-/* Contact buttons grid */
-.author-card__links{
-  display:grid;
-  grid-template-columns:1fr 1fr; /* 2 per row */
-  gap:8px;
-  margin-top:.8rem;
-}
-
-/* Uniform tiles, centered text */
+/* Contact buttons */
+.author-card__links{ display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:.8rem; }
 .author-card__btn{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  height:48px;
-  width:100%;
-  padding:0 12px;
-  border-radius:10px;
-  background:#f6f8fa;
-  color:#24292e;
-  text-decoration:none;
-  border:1px solid #dfe2e6;
-  font-size:.9rem;
-  font-weight:500;
-  box-sizing:border-box;
+  display:flex; justify-content:center; align-items:center;
+  height:48px; width:100%; padding:0 12px; border-radius:10px;
+  background:#f6f8fa; color:#24292e; text-decoration:none; border:1px solid #dfe2e6;
+  font-size:.9rem; font-weight:500; box-sizing:border-box;
 }
-.author-card__btn:hover{background:#fff;border-color:#cfd5db}
+.author-card__btn:hover{ background:#fff; border-color:#cfd5db }
+
+/* Hide the first H1 that comes from README to avoid duplicate under banner */
+.readme-wrap h1:first-of-type { display: none; }
 
 /* ===== Mobile ===== */
 @media (max-width: 820px){
-  .hero-split{grid-template-columns:1fr; padding:16px;}
-  .author-card{order:1}
-  .hero-main{order:2; padding:8px 8px 16px}
+  .hero-split{ grid-template-columns:1fr; padding:16px; }
+  .author-card{ order:1 }
+  .hero-main{ order:2; padding:8px 8px 16px }
 }
