@@ -11,7 +11,7 @@ author_title: "Senior Product Manager • AI Data-Driven Solutions"
 author_photo: "/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/images/liad-mizrachi.jpg"
 
 author_links:
-  - label: "Portfolio"
+  - label: "My Portfolio"
     url: "https://findliad.github.io/"
     icon: "🏠"
   - label: "Home Repo"
@@ -20,7 +20,7 @@ author_links:
   - label: "LinkedIn"
     url: "https://www.linkedin.com/in/liad-mizrachi/"
     icon: "🔗"
-  - label: "Email"
+  - label: "Email Me"
     url: "mailto:Liad%20Mizrachi%20<FindLiad@gmail.com>"
     icon: "✉️"
 
