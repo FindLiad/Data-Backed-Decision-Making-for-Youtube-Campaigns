@@ -3,7 +3,7 @@ description: "Marketer-facing dashboard to pick high-ROI YouTube channel collabs
 author: "Liad Mizrachi"
 
 author_title: "Senior Product Manager • AI Data-Driven Solutions"
-author_photo: "/assets/images/liad-mizrachi.jpg"
+author_photo: "/images/liad-mizrachi.jpg"
 
 author_links:
   - label: "Portfolio"
@@ -23,11 +23,10 @@ remote_theme: "pages-themes/cayman@v0.2.0"
 plugins:
   - jekyll-remote-theme
 
-# We want README as content source, but NOT auto-used as the site's index.
+# README is our source, but we render via index.md (disable auto readme index).
 readme_index:
   enabled: false
 
-# (Optional) prevent auto-title extraction
 titles_from_headings:
   enabled: false
 

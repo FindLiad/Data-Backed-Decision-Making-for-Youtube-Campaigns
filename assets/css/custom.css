@@ -43,7 +43,6 @@
 
 /* ===== Left side author card ===== */
 .author-card{
-  /* subtle textured gray background */
   background:
     linear-gradient(135deg, #f7f8fa 0%, #eceff4 100%),
     repeating-linear-gradient(45deg, rgba(0,0,0,.025) 0 10px, rgba(255,255,255,.025) 10px 20px);
@@ -58,7 +57,7 @@
 .author-card__heading{
   text-align:center;
   font-weight:900;
-  font-size:1.3rem;   /* larger than name */
+  font-size:1.3rem;
   letter-spacing:.3px;
   margin-bottom:.6rem;
 }

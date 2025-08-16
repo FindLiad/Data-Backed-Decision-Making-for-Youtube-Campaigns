@@ -2,10 +2,10 @@
 
 A marketer-facing dashboard to **identify high-ROI YouTube channels** for brand collaborations using clean, comparable metrics.
 
-- 🔗 **Live Dashboard (Tableau Public):**
+- 🔗 **Live Dashboard (Tableau Public):**  
   [Live Dashboard](https://public.tableau.com/app/profile/liad.mizrachi/viz/YoutubeVisualization_17550201203060/Dashboard1?publish=yes)
 
-- 📦 **Repository:** 
+- 📦 **Repository:**  
   [GitHub Repo](https://github.com/FindLiad/Data-Backed-Decision-Making-for-Youtube-Campaigns)
 
 ---
@@ -39,11 +39,11 @@ This repo includes the **PRD**, reproducible SQL/data prep, the Tableau workbook
 ## UI/UX
 - **Mock Up**
 
-[![Mock](assets/images/dashboard_mock.png)](assets/images/dashboard_mock.png)
+[![Mock](/images/dashboard_mock.png)](/images/dashboard_mock.png)
 
 - **Final Interface**
 
-[![Dashboard](assets/images/dashboard.png)](assets/images/dashboard.png)
+[![Dashboard](/images/dashboard.png)](/images/dashboard.png)
 
 ---
 
@@ -63,12 +63,12 @@ This repo includes the **PRD**, reproducible SQL/data prep, the Tableau workbook
 ---
 
 ## Data & Files
-- **Raw data:** [`assets/data/raw_youtube_data.csv`](assets/data/raw_youtube_data.csv)  
-- **Final dataset:** [`assets/data/final_youtube_data.csv`](assets/data/final_youtube_data.csv)  
-- **SQLite DB (optional):** [`assets/data/youtube.db`](assets/data/youtube.db)  
-- **Tableau workbook:** [`visualizations/Youtube_Visualization.twb`](visualizations/Youtube_Visualization.twb)  
-- **Script (prep):** [`scripts/prep_youtube_uk.py`](scripts/prep_youtube_uk.py)  
-- **PRD (PDF):** [`docs/Product_Requirements_Document.pdf`](docs/Product_Requirements_Document.pdf)
+- **Raw data:** [`/data/raw_youtube_data.csv`](/data/raw_youtube_data.csv)  
+- **Final dataset:** [`/data/final_youtube_data.csv`](/data/final_youtube_data.csv)  
+- **SQLite DB (optional):** [`/data/youtube.db`](/data/youtube.db)  
+- **Tableau workbook:** [`/visualizations/Youtube_Visualization.twb`](/visualizations/Youtube_Visualization.twb)  
+- **Script (prep):** [`/scripts/prep_youtube_uk.py`](/scripts/prep_youtube_uk.py)  
+- **PRD (PDF):** [`/docs/Product_Requirements_Document.pdf`](/docs/Product_Requirements_Document.pdf)
 
 ---
 
@@ -86,4 +86,4 @@ This repo includes the **PRD**, reproducible SQL/data prep, the Tableau workbook
 - **Engagement Ratio** — comments/likes/views to gauge audience responsiveness.  
 - **Views per Subscriber** — measures pull beyond base audience.  
 - **Volume (Videos)** — throughput and consistency.  
-- **Reach (Subscribers, Total Views)**
+- **Reach (Subscribers, Total Views)** — upper bound on campaign awareness.
