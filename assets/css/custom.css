@@ -267,3 +267,11 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
 }
 
 
+/* Toggle which Back-to-top is visible */
+.car-backlink{ display:block; }          /* desktop default shows the inline one */
+.backlink--injected{ display:none; }
+
+@media (max-width: 1140px){
+  .car-backlink{ display:none; }         /* hide inline under Summary on mobile/compact */
+  .backlink--injected{ display:block; }  /* show the one after the mobile author card */
+}

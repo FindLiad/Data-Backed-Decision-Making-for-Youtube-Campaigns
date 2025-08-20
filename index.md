@@ -4,10 +4,11 @@ title: Data-Backed Decision Making for YouTube Campaigns
 ---
 
 {% comment %}
-Render README starting at our CAR "Summary" section (or fallback to generic "## Summary").
-Then split at "## Table of Contents". We remove the built-in “Back to top” at the
-end of the CAR block and reinsert it **after** the injected mobile Author Card,
-so on mobile/compressed desktop the link appears below the author—matching Project 2.
+Render README starting at our CAR "Summary" (or generic "## Summary"),
+then split at "## Table of Contents".
+We convert the CAR's inline back-to-top into a classed element (car-backlink)
+so CSS can toggle visibility by breakpoint, and we inject a second
+(backlink--injected) AFTER the mobile Author card.
 {% endcomment %}
 
 {% capture readme_raw %}{% include_relative README.md %}{% endcapture %}
@@ -30,11 +31,16 @@ so on mobile/compressed desktop the link appears below the author—matching Pro
 
 {%- assign toc_split = body_from_start | split: '## Table of Contents' -%}
 
-{%- capture back_markup -%}<div align="right"><a href="#table-of-contents">↑ Back to top</a></div>{%- endcapture -%}
+{%- assign back_orig -%}
+<div align="right"><a href="#table-of-contents">↑ Back to top</a></div>
+{%- endassign -%}
+{%- assign back_classed -%}
+<div class="car-backlink" align="right"><a href="#table-of-contents">↑ Back to top</a></div>
+{%- endassign -%}
 
 {%- if toc_split.size > 1 -%}
-  {%- assign car_without_bt = toc_split[0] | replace: back_markup, '' -%}
-  {{ car_without_bt | markdownify }}
+  {%- assign car_with_class = toc_split[0] | replace: back_orig, back_classed -%}
+  {{ car_with_class | markdownify }}
 
   <!-- ===== Mobile/Compressed-Desktop Author Card (AFTER CAR, BEFORE TOC) ===== -->
   <div class="author-card author-card--mobile">
@@ -61,14 +67,16 @@ so on mobile/compressed desktop the link appears below the author—matching Pro
     </div>
   </div>
 
-  <!-- Re-insert “Back to top” AFTER the mobile author card -->
-  {{ back_markup }}
+  <!-- Back to top shown only on mobile/compact via CSS -->
+  <div class="backlink--injected" align="right">
+    <a href="#table-of-contents">↑ Back to top</a>
+  </div>
 
   {%- capture toc_and_rest -%}## Table of Contents{{ toc_split[1] }}{%- endcapture -%}
   {{ toc_and_rest | markdownify }}
 {%- else -%}
-  {%- assign car_without_bt = body_from_start | replace: back_markup, '' -%}
-  {{ car_without_bt | markdownify }}
+  {%- assign car_with_class = body_from_start | replace: back_orig, back_classed -%}
+  {{ car_with_class | markdownify }}
 
   <div class="author-card author-card--mobile">
     <div class="author-card__heading">About the Author</div>
@@ -94,6 +102,9 @@ so on mobile/compressed desktop the link appears below the author—matching Pro
     </div>
   </div>
 
-  {{ back_markup }}
+  <div class="backlink--injected" align="right">
+    <a href="#table-of-contents">↑ Back to top</a>
+  </div>
 {%- endif -%}
+
 
