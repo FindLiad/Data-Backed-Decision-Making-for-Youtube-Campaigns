@@ -34,8 +34,8 @@
     {% endif %}
 
     <!-- Cayman then overrides -->
-    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css?v=youtube-mocha-9" />
-    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/custom.css?v=youtube-mocha-9" />
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css?v=youtube-mocha-10" />
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/custom.css?v=youtube-mocha-10" />
 
     <!-- Start at absolute top on first load -->
     <script>
@@ -150,7 +150,25 @@
         window.addEventListener('orientationchange', function(){ setTimeout(toAbsoluteTop,50); });
       })();
     </script>
+
+    <!-- Match tagline width to the H1 width (centered; updates on resize) -->
+    <script>
+      (function () {
+        function syncTaglineWidth(){
+          var title = document.querySelector('.hero-main__title');
+          var tag   = document.querySelector('.hero-main__tagline');
+          if(!title || !tag) return;
+          tag.style.width = title.offsetWidth + 'px';
+        }
+        window.addEventListener('DOMContentLoaded', syncTaglineWidth, {once:true});
+        window.addEventListener('load', syncTaglineWidth);
+        window.addEventListener('resize', syncTaglineWidth);
+        try {
+          var ro = new ResizeObserver(syncTaglineWidth);
+          var t  = document.querySelector('.hero-main__title');
+          if (t) ro.observe(t);
+        } catch(e){}
+      })();
+    </script>
   </body>
 </html>
-
-

@@ -29,10 +29,7 @@ html, body {
 a { color:var(--link); text-decoration:none; }
 a:hover { color:var(--link-hover); text-decoration:underline; }
 pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius:8px; }
-
-/* remove any gap above first element after the hero */
-.main-content{ max-width:64rem; padding: 0 2.5rem 2rem; margin:0 auto; }
-.main-content > *:first-child{ margin-top:0 !important; }
+.main-content{ max-width:64rem; padding:2rem 2.5rem; margin:0 auto; }
 
 /* ========== Sticky Top Nav ========== */
 .top-nav{
@@ -71,7 +68,7 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
   grid-template-columns: minmax(260px,320px) 1px 1fr; /* author | divider | main */
   gap: 0;
   padding: 22px;
-  padding-bottom: 0;              /* << remove bottom gap under buttons */
+  padding-bottom: 12px;            /* restore the “air gap” under the hero buttons */
   border-bottom: 1px solid rgba(0,0,0,.06);
   background: linear-gradient(120deg,var(--hero-grad-1) 0%,var(--hero-grad-2) 45%,var(--hero-grad-3) 100%);
   color:#fff;
@@ -91,15 +88,19 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
   text-align: center;
   opacity: .98;
 }
-/* smaller, italic tagline (-3px) + honor YAML newlines */
+/* italic tagline, obey YAML newlines, and match H1 width (JS sets width) */
 .hero-main__tagline{
-  opacity:.95; max-width:760px; margin:.1rem 0 1.0rem;
+  opacity:.95;
+  margin:.1rem auto 1.0rem;
   font-style: italic;
   font-size: calc(1rem - 3px);
   line-height: 1.35;
-  white-space: pre-line; /* render YAML line breaks */
+  white-space: pre-line;
+  display:block;
+  max-width:none;                 /* allow JS to set explicit width */
 }
-/* smaller hero screenshot so the left column has no bottom gap */
+
+/* hero screenshot */
 .hero-screenshot{
   max-width: 82%;
   height: auto;
@@ -107,10 +108,16 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
   border-radius:10px; border:1px solid rgba(255,255,255,.20); box-shadow:0 10px 24px rgba(0,0,0,.35);
   margin-bottom: 8px;
 }
+
+/* ===== Restore previous hero button look/spacing ===== */
 .hero-actions{
   display:flex; flex-wrap:wrap; justify-content:center;
-  gap: 0 8px;
-  margin: 10px 0 0; /* no extra gap under the buttons */
+  gap: 0 6px;                  /* previous small horizontal gap */
+  margin: 14px 0;              /* equal space above & below (air gap) */
+}
+.btn{
+  display:inline-block; padding:.62rem .9rem; border-radius:10px; background:var(--accent);
+  color:#fff; border:1px solid rgba(0,0,0,.05); font-weight:800; box-shadow:0 6px 16px rgba(0,0,0,.18);
 }
 
 /* ========== Author Card (desktop) ========== */
@@ -123,8 +130,6 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
   width: 100%;
   box-shadow: 0 8px 24px rgba(0,0,0,.12);
   border: 1px solid var(--card-border);
-
-  /* make internal content fill from top to bottom so the link grid can sit flush at the bottom */
   display:flex; flex-direction:column;
 }
 .author-card__heading{ text-align:center; font-weight:900; font-size:1.05rem; margin-bottom:.6rem; }
@@ -132,15 +137,12 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
 .author-card__name{ font-weight:800; font-size:1rem; margin-top:.6rem; text-align:center; }
 .author-card__title{ font-size:.9rem; color: var(--muted); line-height:1.2; margin-top:.1rem; text-align:center; font-style: italic; }
 .author-card__subtitle{ font-size:.88rem; color: var(--muted); line-height:1.25; margin-top:.2rem; text-align:left; }
-.author-card__links{
-  display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:auto; /* << push to bottom (flush) */
-}
+.author-card__links{ display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:auto; }
 .author-card__btn{ display:flex; justify-content:center; align-items:center; height:48px; border-radius:10px;
   background:#e5d2c3; color:#2b211d; border:1px solid #d8c2b4; font-weight:600; }
 .author-card__btn:hover{ background:#dec9b8; }
 
 /* ========== Summary grid (CAR) ========== */
-/* Use content-width image column and make image height match the row (text) height */
 .story-grid{ margin-top:.25rem; }
 .story-row{
   display:grid;
@@ -152,44 +154,30 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
   box-shadow: 0 8px 20px rgba(0,0,0,.08);
   overflow: hidden;
   margin: 18px 0;
-  align-items: stretch;                   /* columns fill the row */
+  align-items: stretch;
   overflow-anchor: none;
 }
-.story-row.rev{ grid-template-columns: auto 1fr; } /* image | text */
+.story-row.rev{ grid-template-columns: auto 1fr; }
 
 .story-copy{
   padding: 20px 22px;
   display:flex;
   flex-direction:column;
-  justify-content:flex-start;  /* top align text */
-  align-items:flex-start;      /* left edge alignment */
+  justify-content:flex-start;
+  align-items:flex-start;
   background: var(--card-bg-2);
 }
 .story-copy h3{ margin: 2px 0 10px; font-size: 1.12rem; color: var(--link-hover); }
 .story-copy p{ margin:0; }
 
-/* image column: no side gutters; image exactly fits row height */
-.story-img-wrap{
-  margin:0; padding:0 8px; display:flex; align-items:center; justify-content:center;
-  background: transparent;
-}
-.story-img{
-  height: 100%;             /* match text column height */
-  max-height: 360px;        /* safety cap so images don’t tower */
-  width: auto;              /* keep natural width */
-  object-fit: contain;      /* no cropping */
-}
+.story-img-wrap{ margin:0; padding:0 8px; display:flex; align-items:center; justify-content:center; background: transparent; }
+.story-img{ height: 100%; max-height: 360px; width: auto; object-fit: contain; }
 
 .story-row + .story-row{ position:relative; }
 .story-row + .story-row::before{
   content:""; position:absolute; top:-8px; left:12px; right:12px; height:1px;
   background:var(--card-border); opacity:.9;
 }
-
-/* Centered figures (screenshots) */
-.centered-figure{ margin:0 auto 28px; text-align:center; max-width:980px; }
-.centered-figure img{ display:inline-block; max-width:100%; height:auto; border-radius:12px; border:1px solid var(--card-border); box-shadow:0 8px 24px rgba(0,0,0,.12); background:#fff; }
-.centered-figure figcaption{ margin-top:8px; font-weight:600; color:var(--muted); }
 
 /* Footer */
 .site-footer{ border-top:1px solid var(--card-border); color:var(--muted); background:transparent; }
@@ -202,23 +190,19 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
   .top-nav{ padding: 10px 10px; flex-direction:column; align-items:center; gap:8px; }
   .top-nav .brand{ font-size: 1.35rem; text-align:center; width:100%; }
   .top-nav__right{ width:100%; display:flex; gap:6px; justify-content:space-between; }
+  .label-desktop{ display:none; } .label-mobile{ display:inline; }
 
-  /* Mobile: show short label, hide long */
-  .label-desktop{ display:none; }
-  .label-mobile{ display:inline; }
-
-  .hero-split{ grid-template-columns: 1fr; padding: 18px 14px 0; } /* zero bottom gap on mobile too */
+  .hero-split{ grid-template-columns: 1fr; padding: 18px 14px 12px; }
   .author-card--desktop{ display:none; }
   .hero-divider{ display:none; }
   .hero-main__title{ font-size: 1.8rem; line-height: 1.15; }
-  .hero-actions{ gap: 0 8px; margin: 10px 0 0; }
+  .hero-actions{ gap: 0 6px; margin: 14px 0; }
   .hero-screenshot{ max-width: 95%; max-height: 320px; }
 
   .story-row, .story-row.rev{ grid-template-columns: 1fr; }
   .story-row .story-copy{ order:1; }
   .story-row .story-img-wrap{ order:2; align-self: center; }
 
-  /* Mobile Author placement (README-injected card appears after CAR) */
   .author-card--mobile{ display:block; margin:18px 0 0; }
   .author-card--desktop{ display:none; }
 }
@@ -251,7 +235,6 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
     box-shadow: 0 10px 28px rgba(0,0,0,.35);
   }
   .author-card__photo{ border-color: var(--card-border); box-shadow:0 6px 18px rgba(0,0,0,.4); }
-  .centered-figure img{ background:#211a17; border-color:var(--card-border); box-shadow:0 10px 28px rgba(0,0,0,.4); }
 }
 
 /* === Mocha heading overrides (beats Cayman green) === */
