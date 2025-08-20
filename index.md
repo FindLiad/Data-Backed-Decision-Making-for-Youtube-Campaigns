@@ -4,42 +4,37 @@ title: Data-Backed Decision Making for YouTube Campaigns
 ---
 
 {% comment %}
-Render README starting at our CAR "Summary" (or generic "## Summary"),
-then split at "## Table of Contents".
-We convert the CAR's inline back-to-top into a classed element (car-backlink)
-so CSS can toggle visibility by breakpoint, and we inject a second
-(backlink--injected) AFTER the mobile Author card.
+Show README starting at the CAR "Summary" section (or fallback to generic "## Summary"),
+then split at "## Table of Contents". We convert the CAR's inline Back-to-top into a
+classed element (car-backlink) so CSS can toggle it off on mobile/compact. We then inject
+a second Back-to-top AFTER the mobile author card (backlink--injected).
 {% endcomment %}
 
 {% capture readme_raw %}{% include_relative README.md %}{% endcapture %}
 
-{%- assign token_car = '## A time I went above and beyond to deliver for the customer' -%}
-{%- assign token_summary = '## Summary' -%}
+{% assign token_car = '## A time I went above and beyond to deliver for the customer' %}
+{% assign token_summary = '## Summary' %}
 
-{%- if readme_raw contains token_car -%}
-  {%- assign start_token = token_car -%}
-{%- else -%}
-  {%- assign start_token = token_summary -%}
-{%- endif -%}
+{% if readme_raw contains token_car %}
+  {% assign start_token = token_car %}
+{% else %}
+  {% assign start_token = token_summary %}
+{% endif %}
 
-{%- assign after_start = readme_raw | split: start_token -%}
-{%- if after_start.size > 1 -%}
-  {%- capture body_from_start -%}{{ start_token }}{{ after_start[1] }}{%- endcapture -%}
-{%- else -%}
-  {%- assign body_from_start = readme_raw -%}
-{%- endif -%}
+{% assign after_start = readme_raw | split: start_token %}
+{% if after_start.size > 1 %}
+  {% capture body_from_start %}{{ start_token }}{{ after_start[1] }}{% endcapture %}
+{% else %}
+  {% assign body_from_start = readme_raw %}
+{% endif %}
 
-{%- assign toc_split = body_from_start | split: '## Table of Contents' -%}
+{% assign toc_split = body_from_start | split: '## Table of Contents' %}
 
-{%- assign back_orig -%}
-<div align="right"><a href="#table-of-contents">↑ Back to top</a></div>
-{%- endassign -%}
-{%- assign back_classed -%}
-<div class="car-backlink" align="right"><a href="#table-of-contents">↑ Back to top</a></div>
-{%- endassign -%}
+{% capture back_orig %}<div align="right"><a href="#table-of-contents">↑ Back to top</a></div>{% endcapture %}
+{% capture back_classed %}<div class="car-backlink" align="right"><a href="#table-of-contents">↑ Back to top</a></div>{% endcapture %}
 
-{%- if toc_split.size > 1 -%}
-  {%- assign car_with_class = toc_split[0] | replace: back_orig, back_classed -%}
+{% if toc_split.size > 1 %}
+  {% assign car_with_class = toc_split[0] | replace: back_orig, back_classed %}
   {{ car_with_class | markdownify }}
 
   <!-- ===== Mobile/Compressed-Desktop Author Card (AFTER CAR, BEFORE TOC) ===== -->
@@ -72,10 +67,10 @@ so CSS can toggle visibility by breakpoint, and we inject a second
     <a href="#table-of-contents">↑ Back to top</a>
   </div>
 
-  {%- capture toc_and_rest -%}## Table of Contents{{ toc_split[1] }}{%- endcapture -%}
+  {% capture toc_and_rest %}## Table of Contents{{ toc_split[1] }}{% endcapture %}
   {{ toc_and_rest | markdownify }}
-{%- else -%}
-  {%- assign car_with_class = body_from_start | replace: back_orig, back_classed -%}
+{% else %}
+  {% assign car_with_class = body_from_start | replace: back_orig, back_classed %}
   {{ car_with_class | markdownify }}
 
   <div class="author-card author-card--mobile">
@@ -105,6 +100,6 @@ so CSS can toggle visibility by breakpoint, and we inject a second
   <div class="backlink--injected" align="right">
     <a href="#table-of-contents">↑ Back to top</a>
   </div>
-{%- endif -%}
+{% endif %}
 
 
