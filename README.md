@@ -19,10 +19,10 @@ A marketer-facing dashboard to **identify high-ROI YouTube channels** for brand 
     <div class="story-copy">
       <h3>Context</h3>
       <p>
-        A brand agency needed to decide—fast—which YouTube creators could move the needle for an upcoming campaign.
-        The data existed (subscribers, views, video counts) but lived in scattered exports that told different stories.
-        Decisions were slow, debates were subjective, and every day lost meant missed reach. Even though it sat
-        outside my formal scope, I stepped in to productize the process: the goal was one enterprise-ready dashboard
+        A brand agency needed to decide—fast—which YouTube creators could move the needle for an upcoming campaign.<br><br>
+        The data existed (subscribers, views, video counts) but lived in scattered exports that told different stories. Decisions were slow, debates were subjective, and every day lost meant missed reach.<br><br> 
+        Even though it sat outside my formal scope, I stepped in to productize the process.<br><br>
+        The goal was one enterprise-ready dashboard
         that turned messy inputs into a clear, explainable short-list of creators.
       </p>
     </div>
@@ -44,10 +44,10 @@ A marketer-facing dashboard to **identify high-ROI YouTube channels** for brand 
       <h3>Action</h3>
       <p>
         I built an interactive analytics dashboard end-to-end: light Python to clean and normalize CSVs, then Tableau
-        to surface defensible KPIs (Avg Views per Video, Views per Subscriber, reach consistency). Instead of boiling
-        the ocean, I prioritized fixes by business impact—cleaning high-value channels first so the team could move
-        immediately. I added guardrails (type checks, dedupes) and a simple refresh path:
-        replace CSV → run <i>prep_youtube_uk.py</i> → open dashboard.
+        to surface defensible KPIs (Avg Views per Video, Views per Subscriber, reach consistency).<br><br> 
+        Instead of boiling the ocean, I prioritized fixes by business impact—cleaning high-value channels first so the team could move
+        immediately. 
+        <br><br>I added guardrails (type checks, dedupes) and a simple refresh path: replace CSV → run <i>prep_youtube_uk.py</i> → open dashboard.
       </p>
     </div>
   </div>
@@ -58,9 +58,9 @@ A marketer-facing dashboard to **identify high-ROI YouTube channels** for brand 
       <h3>Result</h3>
       <p>
         The team shifted from subjective debates to transparent, comparable metrics. Shortlisting creators went from
-        hours of manual sifting to a repeatable workflow that explained <i>why</i> each pick made sense. Stakeholders
-        saw the same truth: clear rankings, clean inputs, and a one-click path to refresh when new data arrived.
-        The dashboard became the standard for campaign planning and unlocked faster, higher-confidence decisions.
+        hours of manual sifting to a repeatable workflow that explained <i>why</i> each pick made sense. 
+        <br><br>Stakeholders saw the same truth: clear rankings, clean inputs, and a one-click path to refresh when new data arrived.
+        <br><br>The dashboard became the standard for campaign planning and unlocked faster, higher-confidence decisions.
       </p>
     </div>
     <figure class="story-img-wrap">

@@ -29,7 +29,10 @@ html, body {
 a { color:var(--link); text-decoration:none; }
 a:hover { color:var(--link-hover); text-decoration:underline; }
 pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius:8px; }
-.main-content{ max-width:64rem; padding:2rem 2.5rem; margin:0 auto; }
+
+/* remove any gap above first element after the hero */
+.main-content{ max-width:64rem; padding: 0 2.5rem 2rem; margin:0 auto; }
+.main-content > *:first-child{ margin-top:0 !important; }
 
 /* ========== Sticky Top Nav ========== */
 .top-nav{
@@ -68,7 +71,7 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
   grid-template-columns: minmax(260px,320px) 1px 1fr; /* author | divider | main */
   gap: 0;
   padding: 22px;
-  padding-bottom: 12px; /* tighten bottom so hero ends at buttons */
+  padding-bottom: 0;              /* << remove bottom gap under buttons */
   border-bottom: 1px solid rgba(0,0,0,.06);
   background: linear-gradient(120deg,var(--hero-grad-1) 0%,var(--hero-grad-2) 45%,var(--hero-grad-3) 100%);
   color:#fff;
@@ -109,10 +112,6 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
   gap: 0 8px;
   margin: 10px 0 0; /* no extra gap under the buttons */
 }
-.btn{
-  display:inline-block; padding:.62rem .9rem; border-radius:10px; background:var(--accent);
-  color:#fff; border:1px solid rgba(0,0,0,.05); font-weight:800; box-shadow:0 6px 16px rgba(0,0,0,.18);
-}
 
 /* ========== Author Card (desktop) ========== */
 .author-card{
@@ -124,13 +123,18 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
   width: 100%;
   box-shadow: 0 8px 24px rgba(0,0,0,.12);
   border: 1px solid var(--card-border);
+
+  /* make internal content fill from top to bottom so the link grid can sit flush at the bottom */
+  display:flex; flex-direction:column;
 }
 .author-card__heading{ text-align:center; font-weight:900; font-size:1.05rem; margin-bottom:.6rem; }
 .author-card__photo{ width:100%; border-radius:12px; border:1px solid var(--card-border); box-shadow:0 6px 18px rgba(0,0,0,.08); }
 .author-card__name{ font-weight:800; font-size:1rem; margin-top:.6rem; text-align:center; }
 .author-card__title{ font-size:.9rem; color: var(--muted); line-height:1.2; margin-top:.1rem; text-align:center; font-style: italic; }
 .author-card__subtitle{ font-size:.88rem; color: var(--muted); line-height:1.25; margin-top:.2rem; text-align:left; }
-.author-card__links{ display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:.8rem; }
+.author-card__links{
+  display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:auto; /* << push to bottom (flush) */
+}
 .author-card__btn{ display:flex; justify-content:center; align-items:center; height:48px; border-radius:10px;
   background:#e5d2c3; color:#2b211d; border:1px solid #d8c2b4; font-weight:600; }
 .author-card__btn:hover{ background:#dec9b8; }
@@ -203,7 +207,7 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
   .label-desktop{ display:none; }
   .label-mobile{ display:inline; }
 
-  .hero-split{ grid-template-columns: 1fr; padding: 18px 14px 16px; }
+  .hero-split{ grid-template-columns: 1fr; padding: 18px 14px 0; } /* zero bottom gap on mobile too */
   .author-card--desktop{ display:none; }
   .hero-divider{ display:none; }
   .hero-main__title{ font-size: 1.8rem; line-height: 1.15; }
