@@ -4,23 +4,22 @@ title: Data-Backed Decision Making for YouTube Campaigns
 ---
 
 {% comment %}
-Render README.md but prefer the “Business Requirements vs. Customer Needs” section
-if present; otherwise fall back to “## Summary”.
+Prefer our CAR summary section; otherwise fall back to the other known headings.
 {% endcomment %}
 
 {% capture readme_raw %}{% include_relative README.md %}{% endcapture %}
-{% assign split_token = '## Business Requirements vs. Customer Needs' %}
-{% assign parts = readme_raw | split: split_token %}
-{% if parts.size > 1 %}
-  {% capture after %}{{ split_token }}{{ parts[1] }}{% endcapture %}
+{% assign keys = '## A time I went above and beyond to deliver for the customer|## Business Requirements vs. Customer Needs|## Summary' | split: '|' %}
+{% assign picked = '' %}
+{% for k in keys %}
+  {% assign parts = readme_raw | split: k %}
+  {% if parts.size > 1 and picked == '' %}
+    {% assign picked = k %}
+    {% capture after %}{{ k }}{{ parts[1] }}{% endcapture %}
+  {% endif %}
+{% endfor %}
+
+{% if picked != '' %}
   {{ after | markdownify }}
 {% else %}
-  {% assign split_token2 = '## Summary' %}
-  {% assign parts2 = readme_raw | split: split_token2 %}
-  {% if parts2.size > 1 %}
-    {% capture after2 %}{{ split_token2 }}{{ parts2[1] }}{% endcapture %}
-    {{ after2 | markdownify }}
-  {% else %}
-    {{ readme_raw | markdownify }}
-  {% endif %}
+  {{ readme_raw | markdownify }}
 {% endif %}

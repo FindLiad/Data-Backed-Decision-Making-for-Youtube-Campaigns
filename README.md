@@ -15,7 +15,69 @@ A productized analytics workflow that lets marketing leaders **rank, screen, and
 
 The goal is a **transparent, reproducible, and explainable** way to pick creators for brand collaborations.
 
-<div align="right"><a href="#table-of-contents">↑ Back to top</a></div>
+<div align="right"><a href="#table-of-contents">↑ Back to top</a></div>## A time I went above and beyond to deliver for the customer
+
+<div class="story-grid">
+
+  <!-- Row 1: CONTEXT (copy left, image right) -->
+  <div class="story-row">
+    <div class="story-copy">
+      <h3>Context</h3>
+      <p>
+        A brand agency needed to decide—fast—which YouTube creators could move the needle for an upcoming campaign.
+        The data existed (subscribers, views, video counts) but lived in scattered exports that told different stories.
+        Decisions were slow, debates were subjective, and every day lost meant missed reach. Even though it sat
+        outside my formal scope, I stepped in to productize the process: the goal was one enterprise-ready dashboard
+        that turned messy inputs into a clear, explainable short-list of creators.
+      </p>
+    </div>
+    <figure class="story-img-wrap">
+      <img class="story-img"
+           src="/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/images/story-context.png"
+           alt="Context scene: scattered spreadsheets and subjective debates">
+    </figure>
+  </div>
+
+  <!-- Row 2: ACTION (image left, copy right) -->
+  <div class="story-row rev">
+    <figure class="story-img-wrap">
+      <img class="story-img"
+           src="/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/images/story-action.png"
+           alt="Action scene: SQL/Python cleanup, Tableau build, prioritization by impact">
+    </figure>
+    <div class="story-copy">
+      <h3>Action</h3>
+      <p>
+        I built an interactive analytics dashboard end-to-end: light Python to clean and normalize CSVs, then Tableau
+        to surface defensible KPIs (Avg Views per Video, Views per Subscriber, reach consistency). Instead of boiling
+        the ocean, I prioritized fixes by business impact—cleaning high-value channels first so the team could move
+        immediately. I added guardrails (type checks, dedupes) and a simple refresh path:
+        replace CSV → run <i>prep_youtube_uk.py</i> → open dashboard.
+      </p>
+    </div>
+  </div>
+
+  <!-- Row 3: RESULT (copy left, image right) -->
+  <div class="story-row">
+    <div class="story-copy">
+      <h3>Result</h3>
+      <p>
+        The team shifted from subjective debates to transparent, comparable metrics. Shortlisting creators went from
+        hours of manual sifting to a repeatable workflow that explained <i>why</i> each pick made sense. Stakeholders
+        saw the same truth: clear rankings, clean inputs, and a one-click path to refresh when new data arrived.
+        The dashboard became the standard for campaign planning and unlocked faster, higher-confidence decisions.
+      </p>
+    </div>
+    <figure class="story-img-wrap">
+      <img class="story-img"
+           src="/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/images/story-result.png"
+           alt="Result scene: stakeholders aligning on a defensible short-list">
+    </figure>
+  </div>
+
+</div>
+
+<div align="right"><a href="#site-top">↑ Back to top</a></div>
 
 ---
 
@@ -35,6 +97,7 @@ The goal is a **transparent, reproducible, and explainable** way to pick creator
 - [How to Reproduce](#how-to-reproduce)
 - [Limitations & Next Steps](#limitations--next-steps)
 - [Credits](#credits)
+
 
 ---
 
