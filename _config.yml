@@ -1,6 +1,8 @@
-title: "Data-Backed Decision Making for YouTube Campaigns"
+title: "Project 1 | YouTube Campaign Analytics"
 welcome_line: "Welcome!"
-description: "This project site is a reimagined real-world business case I faced.\nFeatured is a 1:1 practical walk-through of my thinking in the scenario, trade-offs, and execution as I did in my professional setting—shared without the sensitive business details!"
+description: |
+  This project site is a reimagined real-world business case I faced.
+  Featured is a 1:1 practical walk-through of my thinking in the scenario, trade-offs, and execution as I did in my professional setting—shared without the sensitive business details!
 author: "Liad Mizrachi"
 
 # MUST match repo name (case-sensitive)
@@ -25,11 +27,11 @@ author_links:
     url: "mailto:Liad%20Mizrachi%20<FindLiad@gmail.com>"
     icon: "✉️"
 
-# Images
+# Hero screenshot shown in the banner + social preview
 hero_screenshot_url: "/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/images/finished-dashboard.png"
 og_image: "/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/images/finished-dashboard.png"
 
-# Buttons
+# Hero buttons
 live_dashboard_url: "https://public.tableau.com/app/profile/liad.mizrachi/viz/YoutubeVisualization_17550201203060/Dashboard1?publish=yes"
 next_project_url: "https://findliad.github.io/Human-Resources-Data-Visualization-Dashboard/#site-top"
 
@@ -42,5 +44,6 @@ readme_index:
 titles_from_headings:
   enabled: false
 show_downloads: false
+
 
 

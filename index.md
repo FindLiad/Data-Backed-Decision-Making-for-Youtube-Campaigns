@@ -1,13 +1,15 @@
 ---
 layout: default
-title: Data-Backed Decision Making for YouTube Campaigns
+title: Project 1 | YouTube Campaign Analytics
 ---
 
-{% comment %}
-Render README beginning at the CAR section, then inject the mobile About card and a
-single mobile-only “Back to top”. All back-to-top links should jump to #site-top
-(the beige band above the hero and behind the main menu).
-{% endcomment %}
+{%- comment -%}
+Render README starting at the CAR/Summary section; split at "## Table of Contents".
+Convert the CAR’s inline Back-to-top into a classed element (.car-backlink) so we can
+hide it on mobile/compact and instead show an injected Back-to-top between Summary and
+the mobile About card, plus another after the About card.
+All Back-to-top links target #site-top (absolute top anchor behind the main menu).
+{%- endcomment -%}
 
 {% capture readme_raw %}{% include_relative README.md %}{% endcapture %}
 
@@ -26,18 +28,17 @@ single mobile-only “Back to top”. All back-to-top links should jump to #site
 {% assign pre_toc = toc_parts[0] %}
 {% assign post_toc = toc_parts[1] %}
 
-{%- comment -%}
-Convert any inline “Back to top” blocks in the Summary to a classed variant we can hide
-on mobile. Handle both href="#site-top" and the old href="#table-of-contents".
-{%- endcomment -%}
-{% capture back_a %}<div align="right"><a href="#site-top">↑ Back to top</a></div>{% endcapture %}
-{% capture back_b %}<div align="right"><a href="#table-of-contents">↑ Back to top</a></div>{% endcapture %}
-{% capture back_classed %}<div class="car-backlink" align="right"><a href="#site-top">↑ Back to top</a></div>{% endcapture %}
-{% assign pre_toc = pre_toc | replace: back_a, back_classed | replace: back_b, back_classed %}
+{%- capture back_orig -%}<div align="right"><a href="#site-top">↑ Back to top</a></div>{%- endcapture -%}
+{%- capture back_classed -%}<div class="car-backlink" align="right"><a href="#site-top">↑ Back to top</a></div>{%- endcapture -%}
+{% assign car_html = pre_toc | replace: back_orig, back_classed %}
 
-{{ pre_toc | markdownify }}
+{{ car_html | markdownify }}
 
-<!-- Mobile/compact-only author card appears AFTER the Summary -->
+<!-- Mobile/compact-only: Back to top BETWEEN Summary and About -->
+<div class="backlink--injected" align="right"><a href="#site-top">↑ Back to top</a></div>
+<hr class="m-divider" />
+
+<!-- Mobile/compact-only About the Author (after Summary, before TOC) -->
 <div class="author-card author-card--mobile">
   <div class="author-card__heading">About the Author</div>
 
@@ -59,7 +60,7 @@ on mobile. Handle both href="#site-top" and the old href="#table-of-contents".
 </div>
 
 <!-- Mobile/compact-only: Back to top AFTER About -->
-<div class="backlink--injected" align="right"><a href="#site-top">↑ Back to top</a></div>
+<div class="backlink--after-author" align="right"><a href="#site-top">↑ Back to top</a></div>
 
 {% if post_toc %}
   {% capture rest %}## Table of Contents{{ post_toc }}{% endcapture %}
