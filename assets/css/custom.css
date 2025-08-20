@@ -58,8 +58,9 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
 }
 .nav-btn:hover{ filter:brightness(1.06); }
 
-/* Hide mobile label by default (prevents duplicate text) */
-.label-mobile{ display:none; } .label-desktop{ display:inline; }
+/* Desktop: show long label, hide short */
+.label-mobile{ display:none; }
+.label-desktop{ display:inline; }
 
 /* ========== HERO ========== */
 .hero-split{
@@ -87,12 +88,13 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
   text-align: center;
   opacity: .98;
 }
-/* smaller, italic tagline (-3px) */
+/* smaller, italic tagline (-3px) + honor YAML newlines */
 .hero-main__tagline{
   opacity:.95; max-width:760px; margin:.1rem 0 1.0rem;
   font-style: italic;
   font-size: calc(1rem - 3px);
   line-height: 1.35;
+  white-space: pre-line; /* render YAML line breaks */
 }
 /* smaller hero screenshot so the left column has no bottom gap */
 .hero-screenshot{
@@ -197,6 +199,10 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
   .top-nav .brand{ font-size: 1.35rem; text-align:center; width:100%; }
   .top-nav__right{ width:100%; display:flex; gap:6px; justify-content:space-between; }
 
+  /* Mobile: show short label, hide long */
+  .label-desktop{ display:none; }
+  .label-mobile{ display:inline; }
+
   .hero-split{ grid-template-columns: 1fr; padding: 18px 14px 16px; }
   .author-card--desktop{ display:none; }
   .hero-divider{ display:none; }
@@ -262,3 +268,4 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
 
 /* Mobile-only Author Card default hidden (shown in media query above) */
 .author-card--mobile{ display:none; }
+

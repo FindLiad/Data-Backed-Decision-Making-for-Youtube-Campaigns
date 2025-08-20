@@ -19,23 +19,23 @@
     <meta property="og:title" content="{{ page.title | default: site.title }}" />
     <meta property="og:description" content="{{ site.description }}" />
     <meta property="og:url" content="{{ abs_base }}/" />
-    <meta property="og:image" content="{{ site.url }}{{ share_img }}?v=yt-mocha-8" />
+    <meta property="og:image" content="{{ site.url }}{{ share_img }}?v=yt-mocha-9" />
     <meta property="og:image:alt" content="YouTube Campaign Dashboard preview" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="{{ page.title | default: site.title }}" />
     <meta name="twitter:description" content="{{ site.description }}" />
-    <meta name="twitter:image" content="{{ site.url }}{{ share_img }}?v=yt-mocha-8" />
-    <link rel="image_src" href="{{ site.url }}{{ share_img }}?v=yt-mocha-8" />
+    <meta name="twitter:image" content="{{ site.url }}{{ share_img }}?v=yt-mocha-9" />
+    <link rel="image_src" href="{{ site.url }}{{ share_img }}?v=yt-mocha-9" />
 
     {% if site.hero_screenshot_url %}
       <link rel="preload" as="image" href="{{ site.hero_screenshot_url }}">
     {% endif %}
 
     <!-- Cayman then overrides -->
-    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css?v=youtube-mocha-8" />
-    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/custom.css?v=youtube-mocha-8" />
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css?v=youtube-mocha-9" />
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/custom.css?v=youtube-mocha-9" />
 
     <!-- Start at absolute top on first load -->
     <script>
@@ -61,11 +61,14 @@
     <div id="site-top" style="position:absolute;top:0;left:0;width:1px;height:1px;"></div>
     <div id="table-of-contents" style="position:absolute;top:0;left:0;width:1px;height:1px;"></div>
 
-    <!-- ===== Two-button top menu (no duplicate text) ===== -->
+    <!-- ===== Two-button top menu with mobile-specific label ===== -->
     <nav class="top-nav">
       <div class="brand">✨ Main Menu ✨</div>
       <div class="top-nav__right">
-        <a class="nav-btn nav-home" href="https://findliad.github.io/">Return to Home Portfolio</a>
+        <a class="nav-btn nav-home" href="https://findliad.github.io/">
+          <span class="label-desktop">Return to Home Portfolio</span>
+          <span class="label-mobile">Home Portfolio</span>
+        </a>
         <a class="nav-btn" href="{{ site.next_project_url | default: '#' }}">Next Project</a>
       </div>
     </nav>
@@ -149,4 +152,5 @@
     </script>
   </body>
 </html>
+
 
