@@ -58,12 +58,16 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
 }
 .nav-btn:hover{ filter:brightness(1.06); }
 
+/* Hide mobile label by default (prevents duplicate text) */
+.label-mobile{ display:none; } .label-desktop{ display:inline; }
+
 /* ========== HERO ========== */
 .hero-split{
   display:grid;
   grid-template-columns: minmax(260px,320px) 1px 1fr; /* author | divider | main */
   gap: 0;
   padding: 22px;
+  padding-bottom: 12px; /* tighten bottom so hero ends at buttons */
   border-bottom: 1px solid rgba(0,0,0,.06);
   background: linear-gradient(120deg,var(--hero-grad-1) 0%,var(--hero-grad-2) 45%,var(--hero-grad-3) 100%);
   color:#fff;
@@ -83,18 +87,25 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
   text-align: center;
   opacity: .98;
 }
-.hero-main__tagline{ opacity:.95; max-width:760px; margin:.1rem 0 1.0rem; }
-
+/* smaller, italic tagline (-3px) */
+.hero-main__tagline{
+  opacity:.95; max-width:760px; margin:.1rem 0 1.0rem;
+  font-style: italic;
+  font-size: calc(1rem - 3px);
+  line-height: 1.35;
+}
+/* smaller hero screenshot so the left column has no bottom gap */
 .hero-screenshot{
-  width: 560px; max-width: 92%;
-  height:auto;
+  max-width: 82%;
+  height: auto;
+  max-height: 360px;
   border-radius:10px; border:1px solid rgba(255,255,255,.20); box-shadow:0 10px 24px rgba(0,0,0,.35);
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 .hero-actions{
   display:flex; flex-wrap:wrap; justify-content:center;
   gap: 0 8px;
-  margin: 14px 0;
+  margin: 10px 0 0; /* no extra gap under the buttons */
 }
 .btn{
   display:inline-block; padding:.62rem .9rem; border-radius:10px; background:var(--accent);
@@ -114,19 +125,20 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
 }
 .author-card__heading{ text-align:center; font-weight:900; font-size:1.05rem; margin-bottom:.6rem; }
 .author-card__photo{ width:100%; border-radius:12px; border:1px solid var(--card-border); box-shadow:0 6px 18px rgba(0,0,0,.08); }
-.author-card__name{ font-weight:800; font-size:1rem; margin-top:.6rem; text-align:center; }
-.author-card__title{ font-size:.9rem; color: var(--muted); line-height:1.2; margin-top:.1rem; text-align:center; }
-.author-card__subtitle{ font-size:.88rem; color: var(--muted); line-height:1.25; margin-top:.2rem; text-align:center; }
+.author-card__name{ font-weight:800; font-size:1rem; margin-top:.6rem; text-align:left; }
+.author-card__title{ font-size:.9rem; color: var(--muted); line-height:1.2; margin-top:.1rem; text-align:left; font-style: italic; }
+.author-card__subtitle{ font-size:.88rem; color: var(--muted); line-height:1.25; margin-top:.2rem; text-align:left; }
 .author-card__links{ display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:.8rem; }
 .author-card__btn{ display:flex; justify-content:center; align-items:center; height:48px; border-radius:10px;
   background:#e5d2c3; color:#2b211d; border:1px solid #d8c2b4; font-weight:600; }
 .author-card__btn:hover{ background:#dec9b8; }
 
 /* ========== Summary grid (CAR) ========== */
+/* Use content-width image column and make image height match the row (text) height */
 .story-grid{ margin-top:.25rem; }
 .story-row{
   display:grid;
-  grid-template-columns: 1fr minmax(320px, 520px); /* text | image */
+  grid-template-columns: 1fr auto;       /* text | image (auto fits image width) */
   column-gap: 0;
   background: var(--card-bg);
   border: 1px solid var(--card-border);
@@ -134,10 +146,10 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
   box-shadow: 0 8px 20px rgba(0,0,0,.08);
   overflow: hidden;
   margin: 18px 0;
-  align-items: stretch;
+  align-items: stretch;                   /* columns fill the row */
   overflow-anchor: none;
 }
-.story-row.rev{ grid-template-columns: minmax(320px, 520px) 1fr; } /* image | text */
+.story-row.rev{ grid-template-columns: auto 1fr; } /* image | text */
 
 .story-copy{
   padding: 20px 22px;
@@ -147,13 +159,16 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
 .story-copy h3{ margin: 2px 0 10px; font-size: 1.12rem; color: var(--link-hover); }
 .story-copy p{ margin:0; }
 
-.story-img-wrap{ margin:0; padding:12px; display:flex; align-items:center; justify-content:center; background:var(--card-bg); }
+/* image column: no side gutters; image exactly fits row height */
+.story-img-wrap{
+  margin:0; padding:0 8px; display:flex; align-items:center; justify-content:center;
+  background: transparent;
+}
 .story-img{
-  width: 100%;
-  height: auto;
-  max-height: 520px;
-  object-fit: contain;
-  aspect-ratio: auto !important;
+  height: 100%;             /* match text column height */
+  max-height: 360px;        /* safety cap so images don’t tower */
+  width: auto;              /* keep natural width */
+  object-fit: contain;      /* no cropping */
 }
 
 .story-row + .story-row{ position:relative; }
@@ -172,23 +187,25 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
 
 /* ========== Responsive ========== */
 @media (max-width: 1140px){
-  .hero-screenshot{ width: 520px; }
+  .hero-screenshot{ max-width: 86%; max-height: 340px; }
 }
 @media (max-width: 980px){
   .top-nav{ padding: 10px 10px; flex-direction:column; align-items:center; gap:8px; }
   .top-nav .brand{ font-size: 1.35rem; text-align:center; width:100%; }
   .top-nav__right{ width:100%; display:flex; gap:6px; justify-content:space-between; }
 
-  .hero-split{ grid-template-columns: 1fr; padding: 18px 14px 20px; }
+  .hero-split{ grid-template-columns: 1fr; padding: 18px 14px 16px; }
   .author-card--desktop{ display:none; }
   .hero-divider{ display:none; }
   .hero-main__title{ font-size: 1.8rem; line-height: 1.15; }
-  .hero-actions{ gap: 0 8px; margin: 14px 0; }
-  .hero-screenshot{ width: 95%; max-width: 690px; }
+  .hero-actions{ gap: 0 8px; margin: 10px 0 0; }
+  .hero-screenshot{ max-width: 95%; max-height: 320px; }
 
   .story-row, .story-row.rev{ grid-template-columns: 1fr; }
   .story-row .story-copy{ order:1; }
   .story-row .story-img-wrap{ order:2; align-self: center; }
+  /* Mobile label swap if you reintroduce the two-span label */
+  .label-desktop{ display:none; } .label-mobile{ display:inline; }
 }
 
 /* ========== Dark Mode variants ========== */
@@ -237,3 +254,4 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
 .markdown-body h6 {
   color: #7a4e2d !important;
 }
+
