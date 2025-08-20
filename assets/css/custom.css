@@ -125,8 +125,8 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
 }
 .author-card__heading{ text-align:center; font-weight:900; font-size:1.05rem; margin-bottom:.6rem; }
 .author-card__photo{ width:100%; border-radius:12px; border:1px solid var(--card-border); box-shadow:0 6px 18px rgba(0,0,0,.08); }
-.author-card__name{ font-weight:800; font-size:1rem; margin-top:.6rem; text-align:left; }
-.author-card__title{ font-size:.9rem; color: var(--muted); line-height:1.2; margin-top:.1rem; text-align:left; font-style: italic; }
+.author-card__name{ font-weight:800; font-size:1rem; margin-top:.6rem; text-align:center; }
+.author-card__title{ font-size:.9rem; color: var(--muted); line-height:1.2; margin-top:.1rem; text-align:center; font-style: italic; }
 .author-card__subtitle{ font-size:.88rem; color: var(--muted); line-height:1.25; margin-top:.2rem; text-align:left; }
 .author-card__links{ display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:.8rem; }
 .author-card__btn{ display:flex; justify-content:center; align-items:center; height:48px; border-radius:10px;
@@ -153,7 +153,10 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
 
 .story-copy{
   padding: 20px 22px;
-  display:flex; flex-direction:column; justify-content:center;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;  /* top align text */
+  align-items:flex-start;      /* left edge alignment */
   background: var(--card-bg-2);
 }
 .story-copy h3{ margin: 2px 0 10px; font-size: 1.12rem; color: var(--link-hover); }
@@ -204,8 +207,10 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
   .story-row, .story-row.rev{ grid-template-columns: 1fr; }
   .story-row .story-copy{ order:1; }
   .story-row .story-img-wrap{ order:2; align-self: center; }
-  /* Mobile label swap if you reintroduce the two-span label */
-  .label-desktop{ display:none; } .label-mobile{ display:inline; }
+
+  /* Mobile Author placement (README-injected card appears after CAR) */
+  .author-card--mobile{ display:block; margin:18px 0 0; }
+  .author-card--desktop{ display:none; }
 }
 
 /* ========== Dark Mode variants ========== */
@@ -255,3 +260,5 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
   color: #7a4e2d !important;
 }
 
+/* Mobile-only Author Card default hidden (shown in media query above) */
+.author-card--mobile{ display:none; }
