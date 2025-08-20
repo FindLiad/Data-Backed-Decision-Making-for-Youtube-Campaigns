@@ -4,7 +4,7 @@ title: Data-Backed Decision Making for YouTube Campaigns
 ---
 
 {% comment %}
-Prefer our CAR summary section; otherwise fall back to the other known headings.
+Prefer our CAR summary section; otherwise fall back to other known headings.
 {% endcomment %}
 
 {% capture readme_raw %}{% include_relative README.md %}{% endcapture %}

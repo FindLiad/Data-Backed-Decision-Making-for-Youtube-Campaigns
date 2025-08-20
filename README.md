@@ -10,12 +10,7 @@ A marketer-facing dashboard to **identify high-ROI YouTube channels** for brand 
 
 ---
 
-## Summary
-A productized analytics workflow that lets marketing leaders **rank, screen, and shortlist** UK YouTube channels using **Subscribers, Total Views, Videos, Avg Views per Video, Engagement Ratio (proxy), and Views per Subscriber**.  
-
-The goal is a **transparent, reproducible, and explainable** way to pick creators for brand collaborations.
-
-<div align="right"><a href="#table-of-contents">↑ Back to top</a></div>## A time I went above and beyond to deliver for the customer
+## A time I went above and beyond to deliver for the customer
 
 <div class="story-grid">
 
@@ -98,7 +93,6 @@ The goal is a **transparent, reproducible, and explainable** way to pick creator
 - [Limitations & Next Steps](#limitations--next-steps)
 - [Credits](#credits)
 
-
 ---
 
 ## Objective & Success Criteria
@@ -110,7 +104,7 @@ The goal is a **transparent, reproducible, and explainable** way to pick creator
 2. Explain *why* a channel is shortlisted (transparent inputs).
 3. Refresh quickly when new data arrives.
 
-<div align="right"><a href="#table-of-contents">↑ Back to top</a></div>
+<div align="right"><a href="#site-top">↑ Back to top</a></div>
 
 ---
 
@@ -122,7 +116,7 @@ The goal is a **transparent, reproducible, and explainable** way to pick creator
 
 **Why this approach?** It’s **fast, portable, and auditable**—teams can open the script, CSVs, and workbook to understand exactly how rankings are produced.
 
-<div align="right"><a href="#table-of-contents">↑ Back to top</a></div>
+<div align="right"><a href="#site-top">↑ Back to top</a></div>
 
 ---
 
@@ -159,7 +153,7 @@ All metrics are either precomputed in Python or calculated in Tableau:
 These create a **balanced scorecard**: reach (subs/views) × responsiveness (engagement/efficiency).
 
 ### 5) Visualize in Tableau
-- Workbook: `/Data-Backed-Decision-Making-for-Youtube-Campaigns/visualizations/Youtube_Visualization.twb`  
+- Workbook: `/Data-Backed-Decision-Making-for-Youtube-Campaigns/visualizations/Youtube_Visualization.twbx`  
 - Data source: `/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/data/final_youtube_data.csv`
 
 **Dashboard Components**
@@ -172,7 +166,7 @@ These create a **balanced scorecard**: reach (subs/views) × responsiveness (eng
 - Published to **Tableau Public**, linked at the top of this page.  
 - Repo includes raw/clean CSVs, the script, the workbook, and this write-up so the logic is **inspectable and reproducible**.
 
-<div align="right"><a href="#table-of-contents">↑ Back to top</a></div>
+<div align="right"><a href="#site-top">↑ Back to top</a></div>
 
 ---
 
@@ -181,27 +175,27 @@ These create a **balanced scorecard**: reach (subs/views) × responsiveness (eng
 - **Why CSV pipeline?** Lightweight, easy for non-engineers, zero infra.  
 - **Why Tableau?** Fast iteration and simple publishing for stakeholders.
 
-<div align="right"><a href="#table-of-contents">↑ Back to top</a></div>
+<div align="right"><a href="#site-top">↑ Back to top</a></div>
 
 ---
 
 ## Results (Screenshots)
 
 <figure class="centered-figure">
-  <a href="/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/images/dashboard_mock.png" target="_blank" rel="noopener">
-    <img src="/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/images/dashboard_mock.png" alt="Mock Up">
+  <a href="/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/images/mockup-dashboard.png" target="_blank" rel="noopener">
+    <img src="/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/images/mockup-dashboard.png" alt="Mock Up">
   </a>
   <figcaption>Mock Up</figcaption>
 </figure>
 
 <figure class="centered-figure">
-  <a href="/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/images/dashboard.png" target="_blank" rel="noopener">
-    <img src="/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/images/dashboard.png" alt="Final Interface">
+  <a href="/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/images/finished-dashboard.png" target="_blank" rel="noopener">
+    <img src="/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/images/finished-dashboard.png" alt="Final Interface">
   </a>
   <figcaption>Final Interface</figcaption>
 </figure>
 
-<div align="right"><a href="#table-of-contents">↑ Back to top</a></div>
+<div align="right"><a href="#site-top">↑ Back to top</a></div>
 
 ---
 
@@ -213,22 +207,22 @@ These create a **balanced scorecard**: reach (subs/views) × responsiveness (eng
 - **Prep script:**  
   [/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/scripts/prep_youtube_uk.py](/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/scripts/prep_youtube_uk.py)
 - **Tableau workbook:**  
-  [/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/visualizations/Youtube_Visualization.twb](/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/visualizations/Youtube_Visualization.twb)
+  [/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/visualizations/Youtube_Visualization.twbx](/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/visualizations/Youtube_Visualization.twbx)
 - **PRD:**  
   [/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/docs/Product_Requirements_Document.pdf](/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/docs/Product_Requirements_Document.pdf)
 
-<div align="right"><a href="#table-of-contents">↑ Back to top</a></div>
+<div align="right"><a href="#site-top">↑ Back to top</a></div>
 
 ---
 
 ## How to Reproduce
 1. **Clone** this repo.  
 2. Run `scripts/prep_youtube_uk.py` (writes `assets/data/final_youtube_data.csv`).  
-3. Open `visualizations/Youtube_Visualization.twb` in **Tableau** and point it at `assets/data/final_youtube_data.csv`.  
+3. Open `visualizations/Youtube_Visualization.twbx` in **Tableau** and point it at `assets/data/final_youtube_data.csv`.  
 4. Explore the dashboard; publish to Tableau Public if desired.  
 5. To refresh later: replace `raw_youtube_data.csv` → re-run script → open workbook (data updates).
 
-<div align="right"><a href="#table-of-contents">↑ Back to top</a></div>
+<div align="right"><a href="#site-top">↑ Back to top</a></div>
 
 ---
 
@@ -238,7 +232,7 @@ These create a **balanced scorecard**: reach (subs/views) × responsiveness (eng
 - Introduce **cost data** to estimate **ROI** (views × conv. rate × margin − fee).  
 - Optional: creator **categories/verticals** to filter comparisons.
 
-<div align="right"><a href="#table-of-contents">↑ Back to top</a></div>
+<div align="right"><a href="#site-top">↑ Back to top</a></div>
 
 ---
 
@@ -246,4 +240,4 @@ These create a **balanced scorecard**: reach (subs/views) × responsiveness (eng
 Concept inspired by a public learning project; this version uses a **CSV-only pipeline** with **Python + Tableau**, documented for product stakeholders.  
 © Liad Mizrachi.
 
-<div align="right"><a href="#table-of-contents">↑ Back to top</a></div>
+<div align="right"><a href="#site-top">↑ Back to top</a></div>

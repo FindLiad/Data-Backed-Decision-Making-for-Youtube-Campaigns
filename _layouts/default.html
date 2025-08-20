@@ -2,22 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, viewport-fit=cover"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
     <title>{{ page.title | default: site.title }}</title>
 
     <!-- Theme -->
     <meta name="color-scheme" content="light dark" />
-    <!-- Mocha theme colors -->
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="#5d4037" />
     <meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#2b201c" />
 
-    {% comment %}
-    ===== Social sharing (Open Graph & Twitter) =====
-    {% endcomment %}
     {% assign abs_base = site.url | append: site.baseurl %}
     {% assign share_img = site.og_image | default: site.hero_screenshot_url %}
     <link rel="canonical" href="{{ abs_base }}/" />
@@ -26,78 +19,70 @@
     <meta property="og:title" content="{{ page.title | default: site.title }}" />
     <meta property="og:description" content="{{ site.description }}" />
     <meta property="og:url" content="{{ abs_base }}/" />
-    <meta property="og:image" content="{{ site.url }}{{ share_img }}" />
-    <meta property="og:image:alt" content="YouTube Campaign Analytics preview" />
+    <meta property="og:image" content="{{ site.url }}{{ share_img }}?v=yt-mocha-7" />
+    <meta property="og:image:alt" content="YouTube Campaign Dashboard preview" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="{{ page.title | default: site.title }}" />
     <meta name="twitter:description" content="{{ site.description }}" />
-    <meta name="twitter:image" content="{{ site.url }}{{ share_img }}" />
-    <link rel="image_src" href="{{ site.url }}{{ share_img }}" />
+    <meta name="twitter:image" content="{{ site.url }}{{ share_img }}?v=yt-mocha-7" />
+    <link rel="image_src" href="{{ site.url }}{{ share_img }}?v=yt-mocha-7" />
 
     {% if site.hero_screenshot_url %}
       <link rel="preload" as="image" href="{{ site.hero_screenshot_url }}">
     {% endif %}
 
-    <!-- Cayman first, then our overrides (cache-busted) -->
-    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css?v=youtube-mocha-1" />
-    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/custom.css?v=youtube-mocha-1" />
+    <!-- Cayman then overrides -->
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css?v=youtube-mocha-7" />
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/custom.css?v=youtube-mocha-7" />
 
-    <!-- Ensure first load starts at absolute top (above the hero) -->
+    <!-- Start at absolute top on first load -->
     <script>
       (function () {
-        if (location.hash) return; // respect deep links
+        if (location.hash) return;
         try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch(e){}
         var target = location.pathname + location.search + '#site-top';
         if (location.href.indexOf('#site-top') === -1) location.replace(target);
       })();
     </script>
 
-    <!-- Force beige contact tiles across modes (specificity boost) -->
+    <!-- Force beige contact tiles -->
     <style>
-      .author-card .author-card__links a.author-card__btn{
-        background: #e5d2c3 !important;
-        border-color: #d8c2b4 !important;
-        color: #2b211d !important;
-        -webkit-appearance: none;
+      .author-card .author-card__links .author-card__btn{
+        background:#e5d2c3!important;border-color:#d8c2b4!important;color:#2b211d!important;
+        -webkit-appearance:none;
       }
-      .author-card .author-card__links a.author-card__btn:hover{
-        background: #dec9b8 !important;
-      }
+      .author-card .author-card__links .author-card__btn:hover{ background:#dec9b8!important; }
     </style>
   </head>
   <body>
-
-    <!-- Absolute top-of-site anchor -->
+    <!-- Absolute top-of-site anchors -->
     <div id="site-top" style="position:absolute;top:0;left:0;width:1px;height:1px;"></div>
+    <div id="table-of-contents" style="position:absolute;top:0;left:0;width:1px;height:1px;"></div>
 
-    <!-- ===== Sticky Top Nav (Project 2 layout) ===== -->
+    <!-- ===== Two-button top menu ===== -->
     <nav class="top-nav">
       <div class="brand">✨ Main Menu ✨</div>
       <div class="top-nav__right">
-        <a class="nav-btn" href="https://findliad.github.io/">Return to Home Portfolio</a>
-        <a class="nav-btn" href="https://findliad.github.io/Human-Resources-Data-Visualization-Dashboard/">Next Project</a>
-        <a class="nav-btn" href="{{ site.github.repository_url | default: 'https://github.com/FindLiad/Data-Backed-Decision-Making-for-Youtube-Campaigns' }}">View on GitHub</a>
+        <a class="nav-btn nav-home" href="https://findliad.github.io/">
+          <span class="label-desktop">Return to Home Portfolio</span>
+          <span class="label-mobile">Home Portfolio</span>
+        </a>
+        <a class="nav-btn" href="{{ site.next_project_url | default: '#' }}">Next Project</a>
       </div>
     </nav>
 
-    <!-- ===== HERO (Project 2 structure, Mocha colors) ===== -->
+    <!-- ===== HERO ===== -->
     <header class="hero-split" id="hero">
-      <!-- Author card (desktop) -->
       <aside class="author-card author-card--desktop">
         <div class="author-card__heading">About the Author</div>
-
         <a href="{{ site.author_photo }}" target="_blank" rel="noopener">
           <img class="author-card__photo" src="{{ site.author_photo }}" alt="{{ site.author }}" />
         </a>
-
         <div class="author-card__name">{{ site.author }}</div>
-        {% if site.author_title %}
-          <div class="author-card__title">{{ site.author_title }}</div>
-        {% endif %}
-
+        {% if site.author_title %}<div class="author-card__title">{{ site.author_title }}</div>{% endif %}
+        {% if site.author_subtitle %}<div class="author-card__subtitle">{{ site.author_subtitle }}</div>{% endif %}
         <div class="author-card__links">
           {% for l in site.author_links %}
             <a class="author-card__btn" href="{{ l.url | escape }}" target="_blank" rel="noopener noreferrer">
@@ -109,20 +94,13 @@
 
       <div class="hero-divider" aria-hidden="true"></div>
 
-      <!-- Title + hero preview + buttons -->
       <section class="hero-main">
         <h1 class="hero-main__title">Project 1 | YouTube Campaign Analytics</h1>
-        {% if site.description %}
-          <p class="hero-main__tagline">{{ site.description }}</p>
-        {% endif %}
-
+        {% if site.welcome_line %}<p class="hero-main__welcome">{{ site.welcome_line }}</p>{% endif %}
+        {% if site.description %}<p class="hero-main__tagline">{{ site.description }}</p>{% endif %}
         {% if site.hero_screenshot_url %}
-          <img class="hero-screenshot"
-               src="{{ site.hero_screenshot_url }}"
-               alt="Dashboard preview"
-               decoding="async" fetchpriority="high" />
+          <img class="hero-screenshot" src="{{ site.hero_screenshot_url }}" alt="Dashboard preview" decoding="async" fetchpriority="high" />
         {% endif %}
-
         <div class="hero-actions">
           {% if site.live_dashboard_url %}
             <a class="btn" href="{{ site.live_dashboard_url }}" target="_blank" rel="noopener">View Live Dashboard</a>
@@ -140,43 +118,38 @@
     <!-- ===== MAIN ===== -->
     <main id="content" class="main-content" role="main">
       {{ content }}
-
       <footer class="site-footer">
         {% if site.github.is_project_page %}
-          <span class="site-footer-owner">
-            <a href="{{ site.github.repository_url }}">{{ site.github.repository_nwo }}</a>
-          </span>
+          <span class="site-footer-owner"><a href="{{ site.github.repository_url }}">{{ site.github.repository_nwo }}</a></span>
         {% endif %}
       </footer>
     </main>
 
-    <!-- Reassert top for iOS/Safari & in-app browsers -->
+    <!-- Alias any #table-of-contents clicks to #site-top -->
+    <script>
+      document.addEventListener('click', function (e) {
+        const a = e.target.closest('a[href$="#table-of-contents"]');
+        if (!a) return;
+        e.preventDefault();
+        location.hash = '#site-top';
+      }, {passive:false});
+    </script>
+
+    <!-- Reassert absolute top on load/history/orientation -->
     <script>
       (function () {
         if (location.hash) return;
-        function toAbsoluteTop() {
-          var a = document.getElementById('site-top');
-          if (a && a.scrollIntoView) { try { a.scrollIntoView({block:'start'}); } catch(e){} }
-          window.scrollTo(0, 0);
-          document.documentElement.scrollTop = 0;
-          document.body.scrollTop = 0;
+        function toAbsoluteTop(){
+          var a=document.getElementById('site-top');
+          if(a&&a.scrollIntoView){try{a.scrollIntoView({block:'start'});}catch(e){}}
+          window.scrollTo(0,0); document.documentElement.scrollTop=0; document.body.scrollTop=0;
         }
-        document.addEventListener('DOMContentLoaded', toAbsoluteTop, { once:true });
-        window.addEventListener('load', function () {
-          requestAnimationFrame(toAbsoluteTop);
-          setTimeout(toAbsoluteTop, 0);
-          setTimeout(toAbsoluteTop, 150);
-          setTimeout(toAbsoluteTop, 300);
-          setTimeout(toAbsoluteTop, 600);
-          setTimeout(toAbsoluteTop, 1000);
-        });
-        window.addEventListener('pageshow', function (e) {
-          if (e.persisted && !location.hash) toAbsoluteTop();
-        });
-        window.addEventListener('orientationchange', function () {
-          setTimeout(toAbsoluteTop, 50);
-        });
+        document.addEventListener('DOMContentLoaded', toAbsoluteTop, {once:true});
+        window.addEventListener('load', function(){ requestAnimationFrame(toAbsoluteTop); setTimeout(toAbsoluteTop,0); setTimeout(toAbsoluteTop,150); setTimeout(toAbsoluteTop,300); setTimeout(toAbsoluteTop,600); setTimeout(toAbsoluteTop,1000); });
+        window.addEventListener('pageshow', function(e){ if(e.persisted && !location.hash) toAbsoluteTop(); });
+        window.addEventListener('orientationchange', function(){ setTimeout(toAbsoluteTop,50); });
       })();
     </script>
   </body>
 </html>
+
