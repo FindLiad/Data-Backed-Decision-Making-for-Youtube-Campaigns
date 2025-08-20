@@ -4,9 +4,10 @@ title: Data-Backed Decision Making for YouTube Campaigns
 ---
 
 {% comment %}
-Show README starting at the CAR "Summary" section, then inject a mobile
-About card BEFORE the Table of Contents.
-We accept either the explicit CAR heading or the generic "## Summary".
+Render README starting at our CAR "Summary" section (or fallback to generic "## Summary").
+Then split at "## Table of Contents". We remove the built-in “Back to top” at the
+end of the CAR block and reinsert it **after** the injected mobile Author Card,
+so on mobile/compressed desktop the link appears below the author—matching Project 2.
 {% endcomment %}
 
 {% capture readme_raw %}{% include_relative README.md %}{% endcapture %}
@@ -28,8 +29,12 @@ We accept either the explicit CAR heading or the generic "## Summary".
 {%- endif -%}
 
 {%- assign toc_split = body_from_start | split: '## Table of Contents' -%}
+
+{%- capture back_markup -%}<div align="right"><a href="#table-of-contents">↑ Back to top</a></div>{%- endcapture -%}
+
 {%- if toc_split.size > 1 -%}
-  {{ toc_split[0] | markdownify }}
+  {%- assign car_without_bt = toc_split[0] | replace: back_markup, '' -%}
+  {{ car_without_bt | markdownify }}
 
   <!-- ===== Mobile/Compressed-Desktop Author Card (AFTER CAR, BEFORE TOC) ===== -->
   <div class="author-card author-card--mobile">
@@ -56,11 +61,15 @@ We accept either the explicit CAR heading or the generic "## Summary".
     </div>
   </div>
 
+  <!-- Re-insert “Back to top” AFTER the mobile author card -->
+  {{ back_markup }}
+
   {%- capture toc_and_rest -%}## Table of Contents{{ toc_split[1] }}{%- endcapture -%}
   {{ toc_and_rest | markdownify }}
 {%- else -%}
-  {{ body_from_start | markdownify }}
-  <!-- Fallback injection if no TOC present -->
+  {%- assign car_without_bt = body_from_start | replace: back_markup, '' -%}
+  {{ car_without_bt | markdownify }}
+
   <div class="author-card author-card--mobile">
     <div class="author-card__heading">About the Author</div>
 
@@ -84,4 +93,7 @@ We accept either the explicit CAR heading or the generic "## Summary".
       {% endfor %}
     </div>
   </div>
+
+  {{ back_markup }}
 {%- endif -%}
+
