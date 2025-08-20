@@ -4,9 +4,10 @@ author: "Liad Mizrachi"
 
 # MUST match repo name (case-sensitive)
 baseurl: "/Data-Backed-Decision-Making-for-Youtube-Campaigns"
-url: "https://findliad.github.io"   # absolute site URL for Open Graph / share previews
 
 author_title: "Senior Product Manager • AI Data-Driven Solutions"
+
+# photo location matches assets/images in your repo
 author_photo: "/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/images/liad-mizrachi.jpg"
 
 author_links:
@@ -23,14 +24,7 @@ author_links:
     url: "mailto:Liad%20Mizrachi%20<FindLiad@gmail.com>"
     icon: "✉️"
 
-# Hero + social share image (use your actual final dashboard screenshot)
-hero_preview: "/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/images/dashboard.png"
-hero_screenshot_url: "/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/images/dashboard.png"
-og_image: "/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/images/dashboard.png"
-
-# Buttons
 live_dashboard_url: "https://public.tableau.com/app/profile/liad.mizrachi/viz/YoutubeVisualization_17550201203060/Dashboard1?publish=yes"
-next_project_url: "https://findliad.github.io/Human-Resources-Data-Visualization-Dashboard/"
 
 remote_theme: "pages-themes/cayman@v0.2.0"
 plugins:
@@ -41,5 +35,4 @@ readme_index:
 titles_from_headings:
   enabled: false
 show_downloads: false
-
 

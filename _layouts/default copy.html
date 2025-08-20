@@ -1,0 +1,97 @@
+<!-- _layouts/default.html -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ page.title | default: site.title }}</title>
+
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#5d4037">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#2b201c">
+
+    <!-- Cache-busted CSS -->
+    <link rel="stylesheet" href="/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/css/style.css?v=mocha8">
+    <link rel="stylesheet" href="/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/css/custom.css?v=mocha8">
+
+    <!-- FORCE beige contact tiles on all devices (wins over any dark-mode styles) -->
+    <style>
+      .author-card .author-card__links a.author-card__btn{
+        background: #e5d2c3 !important;
+        border-color: #d8c2b4 !important;
+        color: #2b211d !important;
+        -webkit-appearance: none;
+      }
+      .author-card .author-card__links a.author-card__btn:hover{
+        background: #dec9b8 !important;
+      }
+      @media (prefers-color-scheme: dark){
+        .author-card .author-card__links a.author-card__btn{
+          background: #e5d2c3 !important;
+          border-color: #d8c2b4 !important;
+          color: #2b211d !important;
+        }
+        .author-card .author-card__links a.author-card__btn:hover{
+          background: #dec9b8 !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ===== Split Banner ===== -->
+    <header class="hero-split">
+      <!-- Author Card -->
+      <aside class="author-card">
+        <div class="author-card__heading">About the Author</div>
+
+        <!-- Clickable profile photo -->
+        <a href="{{ site.author_photo }}" target="_blank" rel="noopener">
+          <img class="author-card__photo"
+               src="{{ site.author_photo }}"
+               alt="{{ site.author }}">
+        </a>
+
+        <div class="author-card__name">{{ site.author }}</div>
+        {% if site.author_title %}
+          <div class="author-card__title">{{ site.author_title }}</div>
+        {% endif %}
+        <div class="author-card__links">
+          {% for l in site.author_links %}
+            <a class="author-card__btn" href="{{ l.url | escape }}" target="_blank" rel="noopener noreferrer">
+              {{ l.icon }} {{ l.label }}
+            </a>
+          {% endfor %}
+        </div>
+      </aside>
+
+      <!-- Project Title + Tagline -->
+      <section class="hero-main">
+        <h1 class="hero-main__title">{{ site.title }}</h1>
+        {% if site.description %}
+          <p class="hero-main__tagline">{{ site.description }}</p>
+        {% endif %}
+        <div class="hero-actions">
+          {% if site.live_dashboard_url %}
+            <a class="btn" href="{{ site.live_dashboard_url }}" target="_blank" rel="noopener">View Live Dashboard</a>
+          {% endif %}
+          {% if site.github.repository_url %}
+            <a class="btn" href="{{ site.github.repository_url }}" target="_blank" rel="noopener">View on GitHub</a>
+          {% endif %}
+        </div>
+      </section>
+    </header>
+
+    <!-- ===== Main Content ===== -->
+    <main id="content" class="main-content" role="main">
+      {{ content }}
+
+      <footer class="site-footer">
+        {% if site.github.is_project_page %}
+          <span class="site-footer-owner">
+            <a href="{{ site.github.repository_url }}">{{ site.github.repository_nwo }}</a>
+          </span>
+        {% endif %}
+      </footer>
+    </main>
+  </body>
+</html>
