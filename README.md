@@ -20,8 +20,7 @@ A marketer-facing dashboard to **identify high-ROI YouTube channels** for brand 
       <h3>Context</h3>
       <p>
         A brand agency needed to decide—fast—which YouTube creators could move the needle for an upcoming campaign.<br><br>
-        The data existed (subscribers, views, video counts) but lived in scattered exports that told different stories. Decisions were slow, debates were subjective, and every day lost meant missed reach.<br><br> 
-        Even though it sat outside my formal scope, I stepped in to productize the process.<br><br>
+        The data existed (subscribers, views, video counts) but lived in scattered exports that told different stories. Decisions were slow, debates were subjective, and every day lost meant missed reach. Even though it sat outside my formal scope, I stepped in to productize the process.<br><br>
         The goal was one enterprise-ready dashboard
         that turned messy inputs into a clear, explainable short-list of creators.
       </p>
