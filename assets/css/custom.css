@@ -137,7 +137,13 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
 .author-card__name{ font-weight:800; font-size:1rem; margin-top:.6rem; text-align:center; }
 .author-card__title{ font-size:.9rem; color: var(--muted); line-height:1.2; margin-top:.1rem; text-align:center; font-style: italic; }
 .author-card__subtitle{ font-size:.88rem; color: var(--muted); line-height:1.25; margin-top:.2rem; text-align:left; }
-.author-card__links{ display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:auto; }
+.author-card__links{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-top:16px;   /* equal to card padding-bottom → even spacing */
+  margin-bottom:0;   /* bottom spacing comes from card padding */
+}
 .author-card__btn{ display:flex; justify-content:center; align-items:center; height:48px; border-radius:10px;
   background:#e5d2c3; color:#2b211d; border:1px solid #d8c2b4; font-weight:600; }
 .author-card__btn:hover{ background:#dec9b8; }
