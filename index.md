@@ -4,25 +4,34 @@ title: Data-Backed Decision Making for YouTube Campaigns
 ---
 
 {% comment %}
-Render README.md starting at "## Summary", then split again at
-"## Table of Contents" so we can inject the mobile Author Card
-RIGHT AFTER the Summary section and BEFORE the TOC.
+Show README starting at the CAR "Summary" section, then inject a mobile
+About card BEFORE the Table of Contents.
+We accept either the explicit CAR heading or the generic "## Summary".
 {% endcomment %}
 
 {% capture readme_raw %}{% include_relative README.md %}{% endcapture %}
 
-{%- assign summary_split = readme_raw | split: '## Summary' -%}
-{%- if summary_split.size > 1 -%}
-  {%- capture after_summary -%}## Summary{{ summary_split[1] }}{%- endcapture -%}
+{%- assign token_car = '## A time I went above and beyond to deliver for the customer' -%}
+{%- assign token_summary = '## Summary' -%}
+
+{%- if readme_raw contains token_car -%}
+  {%- assign start_token = token_car -%}
 {%- else -%}
-  {%- assign after_summary = readme_raw -%}
+  {%- assign start_token = token_summary -%}
 {%- endif -%}
 
-{%- assign toc_split = after_summary | split: '## Table of Contents' -%}
+{%- assign after_start = readme_raw | split: start_token -%}
+{%- if after_start.size > 1 -%}
+  {%- capture body_from_start -%}{{ start_token }}{{ after_start[1] }}{%- endcapture -%}
+{%- else -%}
+  {%- assign body_from_start = readme_raw -%}
+{%- endif -%}
+
+{%- assign toc_split = body_from_start | split: '## Table of Contents' -%}
 {%- if toc_split.size > 1 -%}
   {{ toc_split[0] | markdownify }}
 
-  <!-- ===== Mobile/Compressed-Desktop Author Card (injected after Summary) ===== -->
+  <!-- ===== Mobile/Compressed-Desktop Author Card (AFTER CAR, BEFORE TOC) ===== -->
   <div class="author-card author-card--mobile">
     <div class="author-card__heading">About the Author</div>
 
@@ -47,11 +56,11 @@ RIGHT AFTER the Summary section and BEFORE the TOC.
     </div>
   </div>
 
-  {%- capture toc_and_after -%}## Table of Contents{{ toc_split[1] }}{%- endcapture -%}
-  {{ toc_and_after | markdownify }}
+  {%- capture toc_and_rest -%}## Table of Contents{{ toc_split[1] }}{%- endcapture -%}
+  {{ toc_and_rest | markdownify }}
 {%- else -%}
-  {{ after_summary | markdownify }}
-  <!-- Fallback: still inject the mobile card if no TOC was found -->
+  {{ body_from_start | markdownify }}
+  <!-- Fallback injection if no TOC present -->
   <div class="author-card author-card--mobile">
     <div class="author-card__heading">About the Author</div>
 
