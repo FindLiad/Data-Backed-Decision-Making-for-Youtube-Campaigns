@@ -9,9 +9,6 @@
   --nav-glass:rgba(90,67,57,.72);
 }
 
-/* Hide the injected mobile author card by default */
-.author-card--mobile{ display:none; }
-
 /* ===== Base ===== */
 html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;line-height:1.55}
@@ -28,6 +25,7 @@ pre,code{background:#efe6df;border:1px solid var(--card-border);border-radius:8p
 .nav-btn{display:inline-block;padding:6px 10px;border-radius:10px;background:var(--accent);color:#fff;border:1px solid rgba(0,0,0,.05);
   font-weight:700;font-size:1rem;white-space:nowrap;box-shadow:0 4px 12px rgba(0,0,0,.15)}
 .nav-btn:hover{filter:brightness(1.06)}
+.label-mobile{display:none}.label-desktop{display:inline}
 
 /* ===== Hero (3-column grid on desktop) ===== */
 .hero-split{
@@ -90,16 +88,17 @@ pre,code{background:#efe6df;border:1px solid var(--card-border);border-radius:8p
   .hero-split{grid-template-columns:1fr;padding:18px 14px 12px}
   .hero-divider{display:none}
   .author-card--desktop{display:none}
-  .author-card--mobile{display:block;margin:18px 0 6px}
+  .author-card--mobile{display:block;margin:18px 0 6px}  /* visible only on mobile/compact */
   .hero-screenshot{max-width:95%;max-height:320px}
 
-  /* Back-to-top placement like P2: between summary & about, divider, after about */
+  /* Back-to-top placement like P2 */
   .car-backlink{display:none}
   .backlink--injected{display:block;text-align:right;margin:10px 0 8px}
   .m-divider{display:block;border:0;border-top:1px solid var(--card-border);margin:10px 0 8px}
   .backlink--after-author{display:block;text-align:right;margin:8px 0 16px}
 }
 
+/* ===== Dark mode ===== */
 @media (prefers-color-scheme:dark){
   :root{
     --bg:#1b1614;--text:#f3ebe7;--muted:#c8b9b1;--card-bg:#241d1a;--card-bg-2:#211a17;--card-border:#3a2f2a;
@@ -118,9 +117,13 @@ pre,code{background:#efe6df;border:1px solid var(--card-border);border-radius:8p
   color:#7a4e2d!important
 }
 
-/* ===== DESKTOP-ONLY GUARD =====
-   Keep the injected mobile About card hidden on wide screens,
-   even though .author-card sets display:flex later in the file. */
+/* ===== DESKTOP-ONLY GUARD (final, most-specific & last) =====
+   Hide the injected mobile author card on wide screens so the hero’s sidebar
+   remains the only About card on desktop. */
 @media (min-width:1141px){
-  .author-card--mobile{ display:none !important; }
+  .markdown-body .author-card.author-card--mobile,
+  .main-content  .author-card.author-card--mobile,
+  .author-card.author-card--mobile{
+    display:none !important;
+  }
 }
