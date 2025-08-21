@@ -10,7 +10,25 @@
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="#5d4037" />
     <meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#2b201c" />
 
-    <!-- Cayman first, then overrides (cache-busted) -->
+    {% assign abs_base = site.url | append: site.baseurl %}
+    {% assign share_img = site.og_image | default: site.hero_screenshot_url %}
+    <link rel="canonical" href="{{ abs_base }}/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="{{ site.title }}" />
+    <meta property="og:title" content="{{ page.title | default: site.title }}" />
+    <meta property="og:description" content="{{ site.description }}" />
+    <meta property="og:url" content="{{ abs_base }}/" />
+    <meta property="og:image" content="{{ site.url }}{{ share_img }}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{ page.title | default: site.title }}" />
+    <meta name="twitter:description" content="{{ site.description }}" />
+    <meta name="twitter:image" content="{{ site.url }}{{ share_img }}" />
+
+    {% if site.hero_screenshot_url %}
+      <link rel="preload" as="image" href="{{ site.hero_screenshot_url }}">
+    {% endif %}
+
+    <!-- Cayman first, then overrides -->
     <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css?v=mocha10" />
     <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/custom.css?v=mocha10" />
   </head>
@@ -19,24 +37,19 @@
     <!-- Absolute top anchor -->
     <div id="site-top" style="position:absolute;top:0;left:0;width:1px;height:1px;"></div>
 
-    <!-- Top nav (same structure/behavior as Project 2) -->
+    <!-- Top nav (match Project 2 structure/behavior) -->
     <nav class="top-nav">
       <div class="brand">✨ Main Menu ✨</div>
       <div class="top-nav__right">
-        {% if site.prev_project_url %}
-          <a class="nav-btn" href="{{ site.prev_project_url }}">Last Project</a>
-        {% endif %}
         <a class="nav-btn nav-home" href="https://findliad.github.io/">
           <span class="label-desktop">Return to Home Portfolio</span>
           <span class="label-mobile">Home Portfolio</span>
         </a>
-        {% if site.next_project_url %}
-          <a class="nav-btn" href="{{ site.next_project_url }}">Next Project</a>
-        {% endif %}
+        <a class="nav-btn" href="{{ site.next_project_url | default: '#' }}">Next Project</a>
       </div>
     </nav>
 
-    <!-- HERO (mirrors Project 2) -->
+    <!-- HERO (mirror Project 2 layout/features) -->
     <header class="hero-split" id="hero">
       <!-- Desktop author card -->
       <aside class="author-card author-card--desktop">
@@ -71,8 +84,11 @@
 
         <div class="hero-main__welcome">{{ site.hero_welcome | default: 'Welcome!' }}</div>
 
-        {% if site.description %}
-          <p class="hero-main__tagline" id="heroTagline">{{ site.description }}</p>
+        {% comment %}
+        The tagline’s width is auto-matched to the H1 below via the tiny script at the bottom.
+        {% endcomment %}
+        {% if site.hero_tagline or site.description %}
+          <p class="hero-main__tagline" id="heroTagline">{{ site.hero_tagline | default: site.description }}</p>
         {% endif %}
 
         {% if site.hero_screenshot_url %}
@@ -128,5 +144,6 @@
     </script>
   </body>
 </html>
+
 
 
