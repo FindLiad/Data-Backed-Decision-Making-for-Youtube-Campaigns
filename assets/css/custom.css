@@ -65,7 +65,9 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
 /* ========== HERO ========== */
 .hero-split{
   display:grid;
-  grid-template-columns: minmax(280px, 320px) minmax(520px, 1fr);
+  /* FIX: 3 columns to account for the vertical divider,
+     so the hero content doesn't drop below the author card */
+  grid-template-columns: minmax(280px, 320px) 1px 1fr;
   gap: 0;
   padding: 22px;
   padding-bottom: 12px;
@@ -147,7 +149,8 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
 .story-grid{ margin-top:.25rem; }
 .story-row{
   display:grid;
-  grid-template-columns: 1fr auto;       /* text grows, image column hugs content */
+  /* text column grows; image column shrink-wraps to the artwork */
+  grid-template-columns: 1fr auto;
   column-gap: 0;
   background: var(--card-bg);
   border: 1px solid var(--card-border);
@@ -158,19 +161,19 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
   align-items: stretch;
   overflow-anchor: none;
 }
-.story-row.rev{ grid-template-columns: auto 1fr; } /* image fits left | text grows right */
+.story-row.rev{ grid-template-columns: auto 1fr; } /* image | text */
 
 .story-copy{
   padding: 20px 22px;
   display:flex; flex-direction:column;
-  justify-content:flex-start;  /* top align text */
-  align-items:flex-start;      /* left align */
+  justify-content:flex-start;
+  align-items:flex-start;
   background: var(--card-bg-2);
 }
 .story-copy h3{ margin: 2px 0 10px; font-size: 1.12rem; color: var(--link-hover); }
 .story-copy p{ margin:0; }
 
-/* Image column shrink-wraps to the illustration */
+/* Image track hugs the illustration’s width */
 .story-img-wrap{
   margin:0;
   padding:0 8px;
@@ -178,9 +181,9 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
   align-items:center;
   justify-content:center;
   background: transparent;
-  width: max-content;          /* key: column width = content width */
-  flex: 0 0 auto;              /* don’t stretch */
-  justify-self: center;        /* center in its track */
+  width: max-content;
+  flex: 0 0 auto;
+  justify-self: center;
 }
 .story-img{
   height: 100%;
