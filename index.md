@@ -5,8 +5,8 @@ title: Data-Backed Decision Making for YouTube Campaigns
 
 {% comment %}
 Show README starting at the CAR "Summary" section (or fallback to generic "## Summary"),
-then split at "## Table of Contents". We convert the CAR's inline Back-to-top(s) into a
-classed element (car-backlink) so CSS can toggle for mobile/desktop.
+then split at "## Table of Contents". Convert any inline Back-to-top blocks to .car-backlink
+and inject a mobile-only About card with Back-to-top links before and after it.
 {% endcomment %}
 
 {% capture readme_raw %}{% include_relative README.md %}{% endcapture %}
@@ -29,10 +29,7 @@ classed element (car-backlink) so CSS can toggle for mobile/desktop.
 
 {% assign toc_split = body_from_start | split: '## Table of Contents' %}
 
-{%- comment -%}
-Normalize any inline Back-to-top blocks to .car-backlink and target absolute site top.
-Handles both #site-top and (legacy) #table-of-contents variants.
-{%- endcomment -%}
+{%- comment -%} normalize Back-to-top anchors {%- endcomment -%}
 {% capture back_orig_site %}<div align="right"><a href="#site-top">↑ Back to top</a></div>{% endcapture %}
 {% capture back_orig_toc  %}<div align="right"><a href="#table-of-contents">↑ Back to top</a></div>{% endcapture %}
 {% capture back_classed   %}<div class="car-backlink" align="right"><a href="#site-top">↑ Back to top</a></div>{% endcapture %}
@@ -41,10 +38,32 @@ Handles both #site-top and (legacy) #table-of-contents variants.
   {% assign pre = toc_split[0] | replace: back_orig_site, back_classed | replace: back_orig_toc, back_classed %}
   {{ pre | markdownify }}
 
-  <!-- Back to top shown only on mobile/compact via CSS -->
-  <div class="backlink--injected" align="right">
-    <a href="#site-top">↑ Back to top</a>
+  <!-- Mobile/compact-only: Back to top BETWEEN Summary and About -->
+  <div class="backlink--injected" align="right"><a href="#site-top">↑ Back to top</a></div>
+
+  <!-- Mobile/compact-only About the Author -->
+  <div class="author-card author-card--mobile">
+    <div class="author-card__heading">About the Author</div>
+
+    <a href="{{ site.author_photo }}" target="_blank" rel="noopener">
+      <img class="author-card__photo" src="{{ site.author_photo }}" alt="{{ site.author }}">
+    </a>
+
+    <div class="author-card__name">{{ site.author }}</div>
+    {% if site.author_title %}<div class="author-card__title">{{ site.author_title }}</div>{% endif %}
+    {% if site.author_subtitle %}<div class="author-card__subtitle">{{ site.author_subtitle }}</div>{% endif %}
+
+    <div class="author-card__links">
+      {% for l in site.author_links %}
+        <a class="author-card__btn" href="{{ l.url | escape }}" target="_blank" rel="noopener noreferrer">
+          {{ l.icon }} {{ l.label }}
+        </a>
+      {% endfor %}
+    </div>
   </div>
+
+  <!-- Mobile/compact-only: Back to top AFTER About -->
+  <div class="backlink--after-author" align="right"><a href="#site-top">↑ Back to top</a></div>
 
   {% capture rest %}## Table of Contents{{ toc_split[1] }}{% endcapture %}
   {{ rest | markdownify }}
@@ -52,7 +71,27 @@ Handles both #site-top and (legacy) #table-of-contents variants.
   {% assign pre = body_from_start | replace: back_orig_site, back_classed | replace: back_orig_toc, back_classed %}
   {{ pre | markdownify }}
 
-  <div class="backlink--injected" align="right">
-    <a href="#site-top">↑ Back to top</a>
+  <div class="backlink--injected" align="right"><a href="#site-top">↑ Back to top</a></div>
+
+  <div class="author-card author-card--mobile">
+    <div class="author-card__heading">About the Author</div>
+
+    <a href="{{ site.author_photo }}" target="_blank" rel="noopener">
+      <img class="author-card__photo" src="{{ site.author_photo }}" alt="{{ site.author }}">
+    </a>
+
+    <div class="author-card__name">{{ site.author }}</div>
+    {% if site.author_title %}<div class="author-card__title">{{ site.author_title }}</div>{% endif %}
+    {% if site.author_subtitle %}<div class="author-card__subtitle">{{ site.author_subtitle }}</div>{% endif %}
+
+    <div class="author-card__links">
+      {% for l in site.author_links %}
+        <a class="author-card__btn" href="{{ l.url | escape }}" target="_blank" rel="noopener noreferrer">
+          {{ l.icon }} {{ l.label }}
+        </a>
+      {% endfor %}
+    </div>
   </div>
+
+  <div class="backlink--after-author" align="right"><a href="#site-top">↑ Back to top</a></div>
 {% endif %}
