@@ -65,7 +65,8 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
 /* ========== HERO ========== */
 .hero-split{
   display:grid;
-  grid-template-columns: minmax(260px,320px) 1px 1fr; /* author | divider | main */
+  /* DESKTOP (3 columns): author | divider | hero-main */
+  grid-template-columns: minmax(260px,320px) 1px 1fr;
   gap: 0;
   padding: 22px;
   padding-bottom: 12px;            /* “air gap” under hero buttons */
@@ -193,8 +194,7 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
   .author-card--desktop{ display:block !important; }
   .author-card--mobile{ display:none !important; }   /* hide injected card */
 
-  /* ↓ Desktop-only: tighten bottom padding so spacing below the contact row
-     matches the visual padding on the other three sides */
+  /* Desktop-only: tighten bottom padding so spacing below the contact row matches other sides */
   .hero-split .author-card{ padding:16px 16px 12px; }
 }
 
@@ -215,7 +215,7 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
   .label-desktop{ display:none; }
   .label-mobile{ display:inline; }
 
-  .hero-split{ grid-template-columns: 1fr; padding: 18px 14px 12px; }
+  .hero-split{ grid-template-columns: 1fr; }
   .hero-divider{ display:none; }
   .hero-main__title{ font-size: 1.8rem; line-height: 1.15; }
   .hero-actions{ gap: 0 6px; margin: 14px 0; }
@@ -279,12 +279,6 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
   .backlink--injected{ display:block; }  /* show the one after the mobile author card */
 }
 
-/* ===== Hotfix: prevent hero title column from collapsing (desktop) ===== */
-.hero-split{
-  /* left: author card, right: hero; keep a real minimum for the hero area */
-  grid-template-columns: minmax(280px, 320px) minmax(520px, 1fr);
-}
-
 /* allow grid item to actually shrink/grow as needed without weird wraps */
 .hero-main{ min-width: 0; }
 
@@ -296,9 +290,4 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
   margin-right: auto;
   white-space: normal;
   word-break: normal;
-}
-
-/* Mobile stays stacked as before */
-@media (max-width: 820px){
-  .hero-split{ grid-template-columns: 1fr; }
 }
