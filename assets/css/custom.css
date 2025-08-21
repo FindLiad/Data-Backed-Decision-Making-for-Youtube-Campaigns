@@ -196,6 +196,11 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
 
   /* Desktop-only: tighten bottom padding so spacing below the contact row matches other sides */
   .hero-split .author-card{ padding:16px 16px 12px; }
+
+  /* Desktop-only: hide accidental duplicate adjacent “Back to top” lines */
+  .main-content div[align="right"] + div[align="right"]{
+    display:none !important;
+  }
 }
 
 /* Compressed desktop (≤1140px): behave like mobile for author placement */
