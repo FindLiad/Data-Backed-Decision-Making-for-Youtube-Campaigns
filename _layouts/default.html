@@ -1,41 +1,53 @@
-<!-- _layouts/default.html -->
+<!-- _layouts/default.html (Project 1) -->
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>{{ page.title | default: site.title }}</title>
 
     <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="#5d4037" />
     <meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#2b201c" />
 
-    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css?v=mocha11">
-    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/custom.css?v=mocha11">
+    <!-- Cache-busted CSS -->
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css?v=mocha9">
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/custom.css?v=mocha9">
 
-    {% if site.hero_screenshot_url %}
-      <link rel="preload" as="image" href="{{ site.hero_screenshot_url }}">
-    {% endif %}
+    <!-- Ensure first load starts at absolute top (anchor we scroll to) -->
+    <script>
+      (function () {
+        if (location.hash) return;
+        try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch(e){}
+        var target = location.pathname + location.search + '#site-top';
+        if (location.href.indexOf('#site-top') === -1) location.replace(target);
+      })();
+    </script>
+
+    <!-- Force beige contact tiles (stable across modes) -->
+    <style>
+      .author-card .author-card__links a.author-card__btn{
+        background:#e5d2c3!important;border-color:#d8c2b4!important;color:#2b211d!important
+      }
+      .author-card .author-card__links a.author-card__btn:hover{background:#dec9b8!important}
+    </style>
   </head>
   <body>
-    <!-- Absolute top-of-site anchor target for ALL “Back to top” links -->
+    <!-- Absolute top-of-site anchor -->
     <div id="site-top" style="position:absolute;top:0;left:0;width:1px;height:1px;"></div>
 
-    <!-- Sticky main menu (two buttons only for Project 1) -->
+    <!-- Top nav (sticky) -->
     <nav class="top-nav">
       <div class="brand">✨ Main Menu ✨</div>
       <div class="top-nav__right">
-        <a class="nav-btn nav-home" href="https://findliad.github.io/">
-          <span class="label-desktop">Return to Home Portfolio</span>
-          <span class="label-mobile">Home Portfolio</span>
-        </a>
+        <a class="nav-btn nav-home" href="https://findliad.github.io/">Return to Home Portfolio</a>
         <a class="nav-btn" href="{{ site.next_project_url | default: '#' }}">Next Project</a>
       </div>
     </nav>
 
-    <!-- Split hero: Author | divider | Main -->
+    <!-- Split hero with vertical divider -->
     <header class="hero-split" id="hero">
-      <!-- Author card (desktop) -->
+      <!-- Author card (desktop only; mobile version is injected in index.md) -->
       <aside class="author-card author-card--desktop">
         <div class="author-card__heading">About the Author</div>
 
@@ -44,12 +56,8 @@
         </a>
 
         <div class="author-card__name">{{ site.author }}</div>
-        {% if site.author_title %}
-          <div class="author-card__title"><em>{{ site.author_title }}</em></div>
-        {% endif %}
-        {% if site.author_subtitle %}
-          <div class="author-card__subtitle">{{ site.author_subtitle }}</div>
-        {% endif %}
+        {% if site.author_title %}<div class="author-card__title">{{ site.author_title }}</div>{% endif %}
+        {% if site.author_subtitle %}<div class="author-card__subtitle">{{ site.author_subtitle }}</div>{% endif %}
 
         <div class="author-card__links">
           {% for l in site.author_links %}
@@ -62,10 +70,10 @@
 
       <div class="hero-divider" aria-hidden="true"></div>
 
-      <!-- Title + Welcome + Tagline + Screenshot + Buttons -->
       <section class="hero-main">
         <h1 class="hero-main__title">{{ site.title }}</h1>
         <div class="hero-main__welcome">{{ site.welcome_line | default: 'Welcome!' }}</div>
+
         {% if site.description %}
           <p class="hero-main__tagline" id="heroTagline">{{ site.description }}</p>
         {% endif %}
@@ -73,8 +81,7 @@
         {% if site.hero_screenshot_url %}
           <img class="hero-screenshot"
                src="{{ site.hero_screenshot_url }}"
-               alt="Dashboard preview"
-               decoding="async" fetchpriority="high" />
+               alt="Dashboard preview" decoding="async" fetchpriority="high" />
         {% endif %}
 
         <div class="hero-actions">
@@ -103,22 +110,39 @@
       </footer>
     </main>
 
-    <!-- Make tagline width match the H1 width (centered), like Project 2 -->
+    <!-- Make tagline width match the H1 (like Project 2) -->
     <script>
       (function () {
         function syncTaglineWidth(){
-          var h1 = document.querySelector('.hero-main__title');
-          var tg = document.getElementById('heroTagline');
-          if(!h1 || !tg) return;
+          var h1=document.querySelector('.hero-main__title');
+          var tg=document.getElementById('heroTagline');
+          if(!h1||!tg) return;
           try{
-            var w = h1.getBoundingClientRect().width;
-            tg.style.maxWidth = w + 'px';
-            tg.style.marginLeft = 'auto';
-            tg.style.marginRight = 'auto';
+            var w=h1.getBoundingClientRect().width;
+            tg.style.maxWidth=w+'px';
+            tg.style.marginLeft='auto';
+            tg.style.marginRight='auto';
           }catch(e){}
         }
         document.addEventListener('DOMContentLoaded', syncTaglineWidth, {once:true});
         window.addEventListener('resize', syncTaglineWidth);
+      })();
+    </script>
+
+    <!-- Strong “scroll-to-top” for all Back to top links -->
+    <script>
+      (function () {
+        function toAbsoluteTop(){
+          var a=document.getElementById('site-top');
+          if(a&&a.scrollIntoView){try{a.scrollIntoView({block:'start'});}catch(e){}}
+          window.scrollTo(0,0); document.documentElement.scrollTop=0; document.body.scrollTop=0;
+        }
+        document.addEventListener('DOMContentLoaded', function(){
+          document.body.addEventListener('click', function(e){
+            var t=e.target.closest('a[href="#site-top"]'); if(!t) return;
+            e.preventDefault(); toAbsoluteTop();
+          });
+        });
       })();
     </script>
   </body>
