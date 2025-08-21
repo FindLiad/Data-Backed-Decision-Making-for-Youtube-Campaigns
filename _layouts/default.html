@@ -1,64 +1,72 @@
-<!-- _layouts/default.html (Project 1) -->
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ page.title | default: site.title }}</title>
 
-    <meta name="color-scheme" content="light dark" />
-    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#5d4037" />
-    <meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#2b201c" />
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#5d4037">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#2b201c">
 
     <!-- Cache-busted CSS -->
-    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css?v=mocha9">
-    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/custom.css?v=mocha9">
+    <link rel="stylesheet" href="/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/css/style.css?v=mocha9">
+    <link rel="stylesheet" href="/Data-Backed-Decision-Making-for-Youtube-Campaigns/assets/css/custom.css?v=mocha9">
 
-    <!-- Ensure first load starts at absolute top (anchor we scroll to) -->
+    <!-- EARLY: make sure first load starts at the absolute top anchor -->
     <script>
       (function () {
-        if (location.hash) return;
+        if (location.hash) return; // respect deep links / section links
         try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch(e){}
         var target = location.pathname + location.search + '#site-top';
         if (location.href.indexOf('#site-top') === -1) location.replace(target);
       })();
     </script>
 
-    <!-- Force beige contact tiles (stable across modes) -->
+    <!-- FORCE beige contact tiles on all devices (wins over any dark-mode styles) -->
     <style>
       .author-card .author-card__links a.author-card__btn{
-        background:#e5d2c3!important;border-color:#d8c2b4!important;color:#2b211d!important
+        background: #e5d2c3 !important;
+        border-color: #d8c2b4 !important;
+        color: #2b211d !important;
+        -webkit-appearance: none;
       }
-      .author-card .author-card__links a.author-card__btn:hover{background:#dec9b8!important}
+      .author-card .author-card__links a.author-card__btn:hover{
+        background: #dec9b8 !important;
+      }
+      @media (prefers-color-scheme: dark){
+        .author-card .author-card__links a.author-card__btn{
+          background: #e5d2c3 !important;
+          border-color: #d8c2b4 !important;
+          color: #2b211d !important;
+        }
+        .author-card .author-card__links a.author-card__btn:hover{
+          background: #dec9b8 !important;
+        }
+      }
     </style>
   </head>
   <body>
-    <!-- Absolute top-of-site anchor -->
+    <!-- Absolute top-of-site anchor (target for all “Back to top” links) -->
     <div id="site-top" style="position:absolute;top:0;left:0;width:1px;height:1px;"></div>
 
-    <!-- Top nav (sticky) -->
-    <nav class="top-nav">
-      <div class="brand">✨ Main Menu ✨</div>
-      <div class="top-nav__right">
-        <a class="nav-btn nav-home" href="https://findliad.github.io/">Return to Home Portfolio</a>
-        <a class="nav-btn" href="{{ site.next_project_url | default: '#' }}">Next Project</a>
-      </div>
-    </nav>
-
-    <!-- Split hero with vertical divider -->
-    <header class="hero-split" id="hero">
-      <!-- Author card (desktop only; mobile version is injected in index.md) -->
-      <aside class="author-card author-card--desktop">
+    <!-- ===== Split Banner ===== -->
+    <header class="hero-split">
+      <!-- Author Card -->
+      <aside class="author-card">
         <div class="author-card__heading">About the Author</div>
 
+        <!-- Clickable profile photo -->
         <a href="{{ site.author_photo }}" target="_blank" rel="noopener">
-          <img class="author-card__photo" src="{{ site.author_photo }}" alt="{{ site.author }}">
+          <img class="author-card__photo"
+               src="{{ site.author_photo }}"
+               alt="{{ site.author }}">
         </a>
 
         <div class="author-card__name">{{ site.author }}</div>
-        {% if site.author_title %}<div class="author-card__title">{{ site.author_title }}</div>{% endif %}
-        {% if site.author_subtitle %}<div class="author-card__subtitle">{{ site.author_subtitle }}</div>{% endif %}
-
+        {% if site.author_title %}
+          <div class="author-card__title">{{ site.author_title }}</div>
+        {% endif %}
         <div class="author-card__links">
           {% for l in site.author_links %}
             <a class="author-card__btn" href="{{ l.url | escape }}" target="_blank" rel="noopener noreferrer">
@@ -68,20 +76,19 @@
         </div>
       </aside>
 
-      <div class="hero-divider" aria-hidden="true"></div>
-
+      <!-- Project Title + Tagline + Screenshot + Buttons -->
       <section class="hero-main">
-        <h1 class="hero-main__title">{{ site.title }}</h1>
-        <div class="hero-main__welcome">{{ site.welcome_line | default: 'Welcome!' }}</div>
-
+        <h1 class="hero-main__title">Project 1 | YouTube Campaign Analytics</h1>
         {% if site.description %}
-          <p class="hero-main__tagline" id="heroTagline">{{ site.description }}</p>
+          <div class="hero-main__welcome">Welcome!</div>
+          <p class="hero-main__tagline">{{ site.description }}</p>
         {% endif %}
 
         {% if site.hero_screenshot_url %}
           <img class="hero-screenshot"
                src="{{ site.hero_screenshot_url }}"
-               alt="Dashboard preview" decoding="async" fetchpriority="high" />
+               alt="Dashboard preview"
+               decoding="async" fetchpriority="high" />
         {% endif %}
 
         <div class="hero-actions">
@@ -98,6 +105,7 @@
       </section>
     </header>
 
+    <!-- ===== Main Content ===== -->
     <main id="content" class="main-content" role="main">
       {{ content }}
 
@@ -110,38 +118,31 @@
       </footer>
     </main>
 
-    <!-- Make tagline width match the H1 (like Project 2) -->
+    <!-- LATE: reassert “go to absolute top” in stubborn mobile browsers -->
     <script>
       (function () {
-        function syncTaglineWidth(){
-          var h1=document.querySelector('.hero-main__title');
-          var tg=document.getElementById('heroTagline');
-          if(!h1||!tg) return;
-          try{
-            var w=h1.getBoundingClientRect().width;
-            tg.style.maxWidth=w+'px';
-            tg.style.marginLeft='auto';
-            tg.style.marginRight='auto';
-          }catch(e){}
+        if (location.hash) return;
+        function toAbsoluteTop() {
+          var a = document.getElementById('site-top');
+          if (a && a.scrollIntoView) { try { a.scrollIntoView({block:'start'}); } catch(e){} }
+          window.scrollTo(0, 0);
+          document.documentElement.scrollTop = 0;
+          document.body.scrollTop = 0;
         }
-        document.addEventListener('DOMContentLoaded', syncTaglineWidth, {once:true});
-        window.addEventListener('resize', syncTaglineWidth);
-      })();
-    </script>
-
-    <!-- Strong “scroll-to-top” for all Back to top links -->
-    <script>
-      (function () {
-        function toAbsoluteTop(){
-          var a=document.getElementById('site-top');
-          if(a&&a.scrollIntoView){try{a.scrollIntoView({block:'start'});}catch(e){}}
-          window.scrollTo(0,0); document.documentElement.scrollTop=0; document.body.scrollTop=0;
-        }
-        document.addEventListener('DOMContentLoaded', function(){
-          document.body.addEventListener('click', function(e){
-            var t=e.target.closest('a[href="#site-top"]'); if(!t) return;
-            e.preventDefault(); toAbsoluteTop();
-          });
+        document.addEventListener('DOMContentLoaded', toAbsoluteTop, { once:true });
+        window.addEventListener('load', function () {
+          requestAnimationFrame(toAbsoluteTop);
+          setTimeout(toAbsoluteTop, 0);
+          setTimeout(toAbsoluteTop, 150);
+          setTimeout(toAbsoluteTop, 300);
+          setTimeout(toAbsoluteTop, 600);
+          setTimeout(toAbsoluteTop, 1000);
+        });
+        window.addEventListener('pageshow', function (e) {
+          if (e.persisted && !location.hash) toAbsoluteTop();
+        });
+        window.addEventListener('orientationchange', function () {
+          setTimeout(toAbsoluteTop, 50);
         });
       })();
     </script>
