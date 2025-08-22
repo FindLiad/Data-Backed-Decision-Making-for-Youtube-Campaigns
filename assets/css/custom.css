@@ -155,7 +155,7 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
 .story-grid{ margin-top:.25rem; }
 .story-row{
   display:grid;
-  grid-template-columns: 44% 56%;
+  grid-template-columns: 65% 35%;
   column-gap: 0;
   background: var(--card-bg);
   border: 1px solid var(--card-border);
@@ -166,7 +166,7 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
   align-items: stretch;
   overflow-anchor: none;
 }
-.story-row.rev{ grid-template-columns: 56% 44%; }
+.story-row.rev{ grid-template-columns: 65% 35%; }
 
 .story-copy{
   padding: 20px 22px;
