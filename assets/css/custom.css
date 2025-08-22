@@ -196,3 +196,20 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
 .markdown-body h4,.markdown-body h5,.markdown-body h6{
   color:#7a4e2d !important;
 }
+
+/* Paste at the very END of assets/css/custom.css */
+/* Shrink summary images on desktop so the image column never exceeds the text column */
+
+@media (min-width: 1140px){
+  :root{ --story-art-width: 220px; }   /* ← tweak 200–240px to taste */
+
+  /* give text a bit more width so it’s shorter, helping alignment */
+  .story-row{ grid-template-columns: 68% 32%; }    /* text | image */
+  .story-row.rev{ grid-template-columns: 32% 68%; }/* image | text */
+
+  .story-img{
+    max-width: var(--story-art-width);
+    width: 100%;
+    height: auto;        /* keeps aspect ratio */
+  }
+}
