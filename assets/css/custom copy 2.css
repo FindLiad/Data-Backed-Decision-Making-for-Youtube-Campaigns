@@ -298,33 +298,3 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
   color: #7a4e2d !important;
 }
 
-/* File: assets/css/custom.css  (append to the END of the file) */
-
-/* === SUMMARY: smaller images + perfect left/right symmetry on desktop === */
-@media (min-width: 1140px){
-  /* text | image */
-  .story-row{ grid-template-columns: 70% 30%; }
-  /* image | text */
-  .story-row.rev{ grid-template-columns: 30% 70%; }
-
-  .story-img-wrap{
-    padding: 0 !important;
-    margin: 0;
-    display: flex;
-    align-items: flex-start;   /* top align image */
-    justify-content: center;
-  }
-
-  .story-img{
-    width: 100%;
-    height: auto;
-    max-width: 240px;          /* ← shrink image size here (try 220–260) */
-    border: 0;
-    box-shadow: none;
-  }
-}
-
-/* Mobile / compressed: keep responsive */
-@media (max-width: 1139px){
-  .story-img{ max-width: 100%; height: auto; }
-}
