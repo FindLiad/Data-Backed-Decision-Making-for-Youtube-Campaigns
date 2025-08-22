@@ -318,7 +318,7 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
   .story-img{
     width: 100%;
     height: auto;
-    max-width: 240px;          /* ← shrink image size here (try 220–260) */
+    max-width: 200px;          /* ← shrink image size here (try 220–260) */
     border: 0;
     box-shadow: none;
   }
