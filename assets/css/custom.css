@@ -218,8 +218,8 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
 /* Desktop: shrink summary images so the image column doesn't exceed text height */
 @media (min-width: 1140px){
   /* give text a bit more width; helps equalize heights */
-  .story-row{ grid-template-columns: 75% 25%; }     /* text | image */
-  .story-row.rev{ grid-template-columns: 25% 75%; } /* image | text */
+  .story-row{ grid-template-columns: 78% 22%; }     /* text | image */
+  .story-row.rev{ grid-template-columns: 22% 78%; } /* image | text */
 
   .story-img-wrap{ align-items: flex-start; }       /* top-align the image */
 
