@@ -213,3 +213,21 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
     height: auto;        /* keeps aspect ratio */
   }
 }
+/* Paste at the very END of assets/css/custom.css */
+
+/* Desktop: shrink summary images so the image column doesn't exceed text height */
+@media (min-width: 1140px){
+  /* give text a bit more width; helps equalize heights */
+  .story-row{ grid-template-columns: 69% 31%; }     /* text | image */
+  .story-row.rev{ grid-template-columns: 31% 69%; } /* image | text */
+
+  .story-img-wrap{ align-items: flex-start; }       /* top-align the image */
+
+  /* hard cap image size (proportional). Tweak 180–220px to taste */
+  .story-img,
+  .story-img-wrap > img{
+    max-width: 200px !important;
+    width: 100%;
+    height: auto !important; /* keep aspect ratio */
+  }
+}
