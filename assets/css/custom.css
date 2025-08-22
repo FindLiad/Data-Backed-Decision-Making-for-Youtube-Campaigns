@@ -166,7 +166,7 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
   align-items: stretch;
   overflow-anchor: none;
 }
-.story-row.rev{ grid-template-columns: 65% 35%; }
+.story-row.rev{ grid-template-columns: 35% 65%; }
 
 .story-copy{
   padding: 20px 22px;
