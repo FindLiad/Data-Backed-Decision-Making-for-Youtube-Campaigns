@@ -231,3 +231,21 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
     height: auto !important; /* keep aspect ratio */
   }
 }
+
+/* Paste at the very END of assets/css/custom.css */
+
+/* Mobile & compressed desktop: make Summary images smaller with a little padding */
+@media (max-width: 1139px){
+  .story-img-wrap{
+    padding: 10px 0 12px;          /* small breathing room around the image */
+    justify-content: center;
+    align-items: center;
+  }
+  .story-img,
+  .story-img-wrap > img{
+    width: 100%;
+    max-width: clamp(220px, 80vw, 360px) !important;  /* shrink proportionally */
+    height: auto !important;                          /* keep aspect ratio */
+    margin: 0 auto;
+  }
+}
