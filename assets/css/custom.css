@@ -1,91 +1,35 @@
 /* File: assets/css/custom.css */
 
-/* --- Base: keep it light; this file only overrides theme bits. --- */
-
-/* Typography tweaks (optional, safe to keep) */
-:root {
-  --card-bg: #f7f7f7;
-  --card-border: #e6e0db;
-}
-
-/* Cards used in your sections */
-.section-card{
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: 14px;
-  padding: 16px;
-}
-
-/* ====== SUMMARY IMAGE COLUMN FIX ======
-   Goal:
-   - No borders/shadows around the three story images
-   - Right-hand column hugs the image size on desktop
-   - Mobile/compressed view stays responsive
-*/
-
-/* Remove Cayman/GitHub default image frame for the story images */
-.page-content img[src*="story-"],
-.main-content  img[src*="story-"]{
-  border: 0 !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  box-shadow: none !important;
+/* === SUMMARY vertical images (Context / Action / Result) === */
+/* Remove borders/shadows; size nicely on desktop; stay responsive on small screens. */
+img[src*="story-context"],
+img[src*="story-action"],
+img[src*="story-result"]{
   display: block;
   height: auto;
+  border: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* Desktop: make the image column shrink to the artwork's natural width */
+/* Desktop sizing (adjust 280px to taste) */
 @media (min-width: 1024px){
-  /* Cap artwork width for a clean proportion; tweak 280px to taste */
-  .page-content img[src*="story-"],
-  .main-content  img[src*="story-"]{
-    max-width: 280px;   /* ← change this number to grow/shrink on desktop */
-  }
-
-  /* If the image sits alone in a cell/div, let that container hug its contents */
-  td:has(> img[src*="story-"]),
-  div:has(> img[src*="story-"]){
-    width: 1%;
-    white-space: nowrap;
-    padding: 0;
+  img[src*="story-context"],
+  img[src*="story-action"],
+  img[src*="story-result"]{
+    max-width: 280px;
   }
 }
 
-/* Mobile & compressed desktop: flow naturally and stay responsive */
+/* Mobile/compressed: full container width */
 @media (max-width: 1023px){
-  td:has(> img[src*="story-"]),
-  div:has(> img[src*="story-"]){
-    width: auto;
-    white-space: normal;
-    padding: 0;
-  }
-  .page-content img[src*="story-"],
-  .main-content  img[src*="story-"]{
+  img[src*="story-context"],
+  img[src*="story-action"],
+  img[src*="story-result"]{
     max-width: 100%;
-    height: auto;
-    margin: 0 auto;
   }
-}
-
-/* Optional: a utility wrapper if you ever choose to wrap the three images
-   in <div class="summary-strip">…</div>. Works even without the wrapper. */
-.summary-strip{
-  display: inline-flex;
-  flex-direction: column;
-  gap: 12px;
-  width: max-content;
-  padding: 0;
-  margin: 0;
-  background: transparent;
-  border: 0;
-}
-.summary-strip img{
-  display: block;
-  height: auto;
-  max-width: 100%;
-  border: 0 !important;
-  box-shadow: none !important;
-  background: transparent !important;
 }
 
 

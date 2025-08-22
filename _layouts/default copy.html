@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{{ page.title | default: site.title }}</title>
+
+    <!-- Theme colors -->
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#5d4037" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#2b201c" />
+
+    {% assign abs_base = site.url | append: site.baseurl %}
+    {% assign share_img = site.og_image | default: site.hero_screenshot_url %}
+    <link rel="canonical" href="{{ abs_base }}/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="{{ site.title }}" />
+    <meta property="og:title" content="{{ page.title | default: site.title }}" />
+    <meta property="og:description" content="{{ site.description }}" />
+    <meta property="og:url" content="{{ abs_base }}/" />
+    <meta property="og:image" content="{{ site.url }}{{ share_img }}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{ page.title | default: site.title }}" />
+    <meta name="twitter:description" content="{{ site.description }}" />
+    <meta name="twitter:image" content="{{ site.url }}{{ share_img }}" />
+
+    {% if site.hero_screenshot_url %}
+      <link rel="preload" as="image" href="{{ site.hero_screenshot_url }}">
+    {% endif %}
+
+    <!-- Cayman first, then overrides -->
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css?v=mocha10" />
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/custom.css?v=mocha10" />
+  </head>
+  <body>
+
+    <!-- Absolute top anchor -->
+    <div id="site-top" style="position:absolute;top:0;left:0;width:1px;height:1px;"></div>
+
+    <!-- Top nav (match Project 2 structure/behavior) -->
+    <nav class="top-nav">
+      <div class="brand">✨ Main Menu ✨</div>
+      <div class="top-nav__right">
+        <a class="nav-btn nav-home" href="https://findliad.github.io/">
+          <span class="label-desktop">Return to Home Portfolio</span>
+          <span class="label-mobile">Home Portfolio</span>
+        </a>
+        <a class="nav-btn" href="{{ site.next_project_url | default: '#' }}">Next Project</a>
+      </div>
+    </nav>
+
+    <!-- HERO (mirror Project 2 layout/features) -->
+    <header class="hero-split" id="hero">
+      <!-- Desktop author card -->
+      <aside class="author-card author-card--desktop">
+        <div class="author-card__heading">About the Author</div>
+
+        <a href="{{ site.author_photo }}" target="_blank" rel="noopener">
+          <img class="author-card__photo" src="{{ site.author_photo }}" alt="{{ site.author }}" />
+        </a>
+
+        <div class="author-card__name">{{ site.author }}</div>
+        {% if site.author_title %}
+          <div class="author-card__title">{{ site.author_title }}</div>
+        {% endif %}
+        {% if site.author_subtitle %}
+          <div class="author-card__subtitle">{{ site.author_subtitle }}</div>
+        {% endif %}
+
+        <div class="author-card__links">
+          {% for l in site.author_links %}
+            <a class="author-card__btn" href="{{ l.url | escape }}" target="_blank" rel="noopener noreferrer">
+              {{ l.icon }} {{ l.label }}
+            </a>
+          {% endfor %}
+        </div>
+      </aside>
+
+      <div class="hero-divider" aria-hidden="true"></div>
+
+      <!-- Title + Welcome + Tagline + Screenshot + Buttons -->
+      <section class="hero-main">
+        <h1 class="hero-main__title">Project 1 | YouTube Campaign Analytics</h1>
+
+        <div class="hero-main__welcome">{{ site.hero_welcome | default: 'Welcome!' }}</div>
+
+        {% comment %}
+        The tagline’s width is auto-matched to the H1 below via the tiny script at the bottom.
+        {% endcomment %}
+        {% if site.hero_tagline or site.description %}
+          <p class="hero-main__tagline" id="heroTagline">{{ site.hero_tagline | default: site.description }}</p>
+        {% endif %}
+
+        {% if site.hero_screenshot_url %}
+          <img class="hero-screenshot"
+               src="{{ site.hero_screenshot_url }}"
+               alt="Dashboard preview"
+               decoding="async" fetchpriority="high" />
+        {% endif %}
+
+        <div class="hero-actions">
+          {% if site.live_dashboard_url %}
+            <a class="btn" href="{{ site.live_dashboard_url }}" target="_blank" rel="noopener">View Live Dashboard</a>
+          {% endif %}
+          {% if site.github.repository_url %}
+            <a class="btn" href="{{ site.github.repository_url }}" target="_blank" rel="noopener">View on GitHub</a>
+          {% endif %}
+          <a class="btn" href="{{ site.baseurl }}/assets/docs/Product_Requirements_Document.pdf" target="_blank" rel="noopener">
+            View Product Requirements Document
+          </a>
+        </div>
+      </section>
+    </header>
+
+    <main id="content" class="main-content" role="main">
+      {{ content }}
+
+      <footer class="site-footer">
+        {% if site.github.is_project_page %}
+          <span class="site-footer-owner">
+            <a href="{{ site.github.repository_url }}">{{ site.github.repository_nwo }}</a>
+          </span>
+        {% endif %}
+      </footer>
+    </main>
+
+    <!-- Match Project 2: make the tagline width equal the H1 width, centered -->
+    <script>
+      (function () {
+        function syncTaglineWidth(){
+          var h1 = document.querySelector('.hero-main__title');
+          var tg = document.getElementById('heroTagline');
+          if(!h1 || !tg) return;
+          try{
+            var w = h1.getBoundingClientRect().width;
+            tg.style.maxWidth = w + 'px';
+            tg.style.marginLeft = 'auto';
+            tg.style.marginRight = 'auto';
+          }catch(e){}
+        }
+        document.addEventListener('DOMContentLoaded', syncTaglineWidth, {once:true});
+        window.addEventListener('resize', syncTaglineWidth);
+      })();
+    </script>
+  </body>
+</html>
+ 
+
