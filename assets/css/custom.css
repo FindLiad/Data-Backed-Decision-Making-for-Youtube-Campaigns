@@ -1,6 +1,10 @@
 /* File: assets/css/custom.css */
 
-/* === SUMMARY vertical images (Context / Action / Result) === */
+/* =========================================================
+   1) Keep the Cayman theme look — we only tweak a few bits.
+   ========================================================= */
+
+/* ---------- A) Summary vertical images (Context / Action / Result) ---------- */
 /* Remove borders/shadows; size nicely on desktop; stay responsive on small screens. */
 img[src*="story-context"],
 img[src*="story-action"],
@@ -14,7 +18,7 @@ img[src*="story-result"]{
   margin-right: auto;
 }
 
-/* Desktop sizing (adjust 280px to taste) */
+/* Desktop sizing (adjust 280px if you want them bigger/smaller) */
 @media (min-width: 1024px){
   img[src*="story-context"],
   img[src*="story-action"],
@@ -31,6 +35,23 @@ img[src*="story-result"]{
     max-width: 100%;
   }
 }
+
+/* Help table-based two-column sections align nicely */
+table td { vertical-align: top; }
+
+/* ---------- B) Hide mobile-only inserts on desktop (prevent duplicates) ---------- */
+.backlink--injected,
+.backlink--after-author,
+.author-card--mobile,
+.m-divider { display: none; }
+
+@media (max-width: 880px){
+  .backlink--injected,
+  .backlink--after-author,
+  .author-card--mobile,
+  .m-divider { display: block; }
+}
+
 
 
 
