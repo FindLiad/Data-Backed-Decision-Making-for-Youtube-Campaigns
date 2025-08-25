@@ -1,5 +1,4 @@
-/* File: assets/css/custom.css
-   Cleaned + polished for Project 1 (Mocha theme) */
+/* File: assets/css/custom.css — Project 1 Mocha theme (100% zoom parity) */
 
 /* ================= Palette ================= */
 :root{
@@ -122,8 +121,8 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
 }
 .story-img{
   display:block; border:0; box-shadow:none; background:transparent;
-  width:100%; height:auto;             /* keep aspect ratio */
-  max-width:240px;                      /* === desktop size knob (proportional) === */
+  width:100%; height:auto;
+  max-width:240px;
 }
 
 /* subtle separator between rows */
@@ -138,38 +137,6 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
 /* Back-to-top hooks used by index.md */
 .car-backlink{ display:block; }
 .backlink--injected,.backlink--after-author,.m-divider{ display:none; }
-
-/* ================= Responsive ================= */
-@media (max-width:1140px){
-  .hero-split{ grid-template-columns:1fr; padding:18px 14px 20px; }
-  .hero-divider{ display:none; }
-  .author-card--desktop{ display:none; }
-  .author-card--mobile{ display:block; }
-
-  .car-backlink{ display:none; }
-  .backlink--injected{ display:block; text-align:right; margin:10px 0 8px; }
-  .m-divider{ display:block; border:0; border-top:1px solid var(--card-border); margin:10px 0 8px; }
-  .backlink--after-author{ display:block; text-align:right; margin:8px 0 16px; }
-
-  .hero-screenshot{ width:520px; }
-  .story-img{ max-width:100%; }         /* responsive images on compressed widths */
-}
-
-@media (max-width:980px){
-  .top-nav{ padding:10px 10px; flex-direction:column; align-items:center; gap:8px; }
-  .top-nav .brand{ font-size:1.35rem; text-align:center; width:100%; }
-  .top-nav__right{ width:100%; display:flex; gap:2px; justify-content:space-between; }
-  .label-desktop{ display:none; } .label-mobile{ display:inline; }
-
-  .hero-main__title{ font-size:1.8rem; line-height:1.15; }
-  .hero-actions{ gap:0 8px; margin:14px 0; }
-  .hero-screenshot{ width:95%; max-width:690px; }
-
-  /* stack story rows: text first, image second */
-  .story-row, .story-row.rev{ grid-template-columns:1fr; }
-  .story-row .story-copy{ order:1; }
-  .story-row .story-img-wrap{ order:2; align-self:center; }
-}
 
 /* ================= Dark Mode ================= */
 @media (prefers-color-scheme: dark){
@@ -197,55 +164,62 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
   color:#7a4e2d !important;
 }
 
-/* Paste at the very END of assets/css/custom.css */
-/* Shrink summary images on desktop so the image column never exceeds the text column */
+/* =================== LAYOUT BREAKPOINTS (100% zoom parity) =================== */
+/* Desktop / wide (>= 981px) — keep “desktop look” that matched your 80% zoom */
+@media (min-width: 981px){
+  .hero-split{ grid-template-columns:minmax(260px,320px) 1px 1fr; padding:22px; }
+  .hero-divider{ display:block; }
+  .author-card--desktop{ display:flex !important; }
+  .author-card--mobile{ display:none !important; }
 
-@media (min-width: 1140px){
-  :root{ --story-art-width: 220px; }   /* ← tweak 200–240px to taste */
-
-  /* give text a bit more width so it’s shorter, helping alignment */
-  .story-row{ grid-template-columns: 68% 32%; }    /* text | image */
-  .story-row.rev{ grid-template-columns: 32% 68%; }/* image | text */
-
-  .story-img{
-    max-width: var(--story-art-width);
-    width: 100%;
-    height: auto;        /* keeps aspect ratio */
-  }
-}
-/* Paste at the very END of assets/css/custom.css */
-
-/* Desktop: shrink summary images so the image column doesn't exceed text height */
-@media (min-width: 1140px){
-  /* give text a bit more width; helps equalize heights */
-  .story-row{ grid-template-columns: 78% 22%; }     /* text | image */
-  .story-row.rev{ grid-template-columns: 22% 78%; } /* image | text */
-
-  .story-img-wrap{ align-items: flex-start; }       /* top-align the image */
-
-  /* hard cap image size (proportional). Tweak 180–220px to taste */
+  /* Story: two-column, small illustrations */
+  .story-row{ grid-template-columns: 78% 22%; }
+  .story-row.rev{ grid-template-columns: 22% 78%; }
+  .story-img-wrap{ align-items:flex-start; }
   .story-img,
   .story-img-wrap > img{
     max-width: 200px !important;
     width: 100%;
-    height: auto !important; /* keep aspect ratio */
+    height: auto !important;
   }
+
+  .hero-screenshot{ width:560px; max-width:92%; }
 }
 
-/* Paste at the very END of assets/css/custom.css */
+/* Compact / mobile (<= 980px) — stacked layout */
+@media (max-width: 980px){
+  .top-nav{ padding:10px 10px; flex-direction:column; align-items:center; gap:8px; }
+  .top-nav .brand{ font-size:1.35rem; text-align:center; width:100%; }
+  .top-nav__right{ width:100%; display:flex; gap:2px; justify-content:space-between; }
+  .label-desktop{ display:none; } .label-mobile{ display:inline; }
 
-/* Mobile & compressed desktop: make Summary images smaller with a little padding */
-@media (max-width: 1139px){
-  .story-img-wrap{
-    padding: 10px 0 12px;          /* small breathing room around the image */
-    justify-content: center;
-    align-items: center;
+  .hero-split{ grid-template-columns:1fr; padding:18px 14px 20px; }
+  .hero-divider{ display:none; }
+  .author-card--desktop{ display:none !important; }
+  .author-card--mobile{ display:block !important; }
+  .author-card--mobile .author-card__photo{
+    max-width:340px; width:100%; height:auto; display:block; margin:0 auto;
+  }
+
+  .hero-main__title{ font-size:1.8rem; line-height:1.15; }
+  .hero-actions{ gap:0 8px; margin:14px 0; }
+  .hero-screenshot{ width:95%; max-width:690px; }
+
+  .story-row, .story-row.rev{ grid-template-columns:1fr; }
+  .story-row .story-copy{ order:1; }
+  .story-row .story-img-wrap{
+    order:2; align-self:center; padding:10px 0 12px; justify-content:center;
   }
   .story-img,
   .story-img-wrap > img{
-    width: 100%;
-    max-width: clamp(220px, 80vw, 360px) !important;  /* shrink proportionally */
-    height: auto !important;                          /* keep aspect ratio */
-    margin: 0 auto;
+    width:100%;
+    max-width:clamp(220px, 80vw, 360px) !important;
+    height:auto !important;
+    margin:0 auto;
   }
+
+  .car-backlink{ display:none; }
+  .backlink--injected{ display:block; text-align:right; margin:10px 0 8px; }
+  .m-divider{ display:block; border:0; border-top:1px solid var(--card-border); margin:10px 0 8px; }
+  .backlink--after-author{ display:block; text-align:right; margin:8px 0 16px; }
 }

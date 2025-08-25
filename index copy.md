@@ -13,6 +13,8 @@ Flow:
 4) Normalize inline Back-to-top → .car-backlink
 5) Inject mobile-only Back-to-top + mobile-only Author card
 6) Append the original Table of Contents (if present)
+
+Desktop CSS should hide the injected mobile bits so there is NEVER a second About on desktop.
 {% endcomment %}
 
 {% capture readme_raw %}{% include_relative README.md %}{% endcapture %}
@@ -88,3 +90,4 @@ Flow:
   {% capture rest %}## Table of Contents{{ post_toc }}{% endcapture %}
   {{ rest | markdownify }}
 {% endif %}
+ 
