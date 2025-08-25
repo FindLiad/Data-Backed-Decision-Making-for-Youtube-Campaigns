@@ -1,4 +1,4 @@
-/* File: assets/css/custom.css — Project 1 Mocha theme (force “desktop look” at typical laptop widths) */
+/* File: assets/css/custom.css — Project 1 Mocha theme (force desktop look + centered Author card) */
 
 /* ================= Palette ================= */
 :root{
@@ -87,13 +87,16 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
   color:var(--text); border-radius:14px; padding:16px; width:100%;
   box-shadow:0 8px 24px rgba(0,0,0,.12); border:1px solid var(--card-border);
   display:flex; flex-direction:column;
+  /* NEW: vertical centering on desktop (equal space above/below content) */
+  justify-content:center;
+  gap:12px;
 }
-.author-card__heading{ text-align:center; font-weight:900; font-size:1.05rem; margin-bottom:.6rem; }
+.author-card__heading{ text-align:center; font-weight:900; font-size:1.05rem; margin:0; }
 .author-card__photo{ width:100%; border-radius:12px; border:1px solid var(--card-border); box-shadow:0 6px 18px rgba(0,0,0,.08); }
-.author-card__name{ font-weight:800; font-size:1rem; margin-top:.6rem; text-align:center; }
-.author-card__title{ font-size:.9rem; color:var(--muted); line-height:1.2; margin-top:.1rem; text-align:center; font-style:italic; }
-.author-card__subtitle{ font-size:.88rem; color:var(--muted); line-height:1.25; margin-top:.2rem; text-align:left; }
-.author-card__links{ display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:16px; }
+.author-card__name{ font-weight:800; font-size:1rem; text-align:center; }
+.author-card__title{ font-size:.9rem; color:var(--muted); line-height:1.2; text-align:center; font-style:italic; }
+.author-card__subtitle{ font-size:.88rem; color:var(--muted); line-height:1.25; text-align:left; }
+.author-card__links{ display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:8px; }
 .author-card__btn{ display:flex; justify-content:center; align-items:center; height:48px; width:100%; padding:0 12px; border-radius:10px;
   background-color:var(--tile-bg)!important; border:1px solid var(--tile-border)!important; color:#2b211d!important;
   font-weight:600; box-sizing:border-box; transition:filter .15s ease, box-shadow .15s ease, transform .04s ease;
@@ -171,7 +174,6 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
 
 /* ► DESKTOP (>= 841px) — keep split hero + left author card + small story art */
 @media (min-width: 841px){
-  /* override any earlier mobile rules */
   .hero-split{ grid-template-columns:minmax(250px,320px) 1px 1fr !important; padding:22px !important; }
   .hero-divider{ display:block !important; }
   .author-card--desktop{ display:flex !important; }
