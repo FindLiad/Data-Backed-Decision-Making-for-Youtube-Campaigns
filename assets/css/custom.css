@@ -1,4 +1,4 @@
-/* File: assets/css/custom.css — Project 1 Mocha theme (100% zoom parity) */
+/* File: assets/css/custom.css — Project 1 Mocha theme (force “desktop look” at typical laptop widths) */
 
 /* ================= Palette ================= */
 :root{
@@ -58,7 +58,7 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
 
 /* ================= Hero ================= */
 .hero-split{
-  display:grid; grid-template-columns:minmax(260px,320px) 1px 1fr; gap:0; padding:22px;
+  display:grid; grid-template-columns:minmax(250px,320px) 1px 1fr; gap:0; padding:22px;
   border-bottom:1px solid rgba(0,0,0,.06);
   background:linear-gradient(120deg,var(--hero-grad-1) 0%,var(--hero-grad-2) 45%,var(--hero-grad-3) 100%);
   color:#fff;
@@ -164,37 +164,45 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
   color:#7a4e2d !important;
 }
 
-/* =================== LAYOUT BREAKPOINTS (100% zoom parity) =================== */
-/* Desktop / wide (>= 981px) — keep “desktop look” that matched your 80% zoom */
-@media (min-width: 981px){
-  .hero-split{ grid-template-columns:minmax(260px,320px) 1px 1fr; padding:22px; }
-  .hero-divider{ display:block; }
+/* ========================================================================== */
+/* 100% ZOOM PARITY RULES                                                     */
+/* Force the “desktop” look down to small laptop widths so 100% ≈ 80% visual  */
+/* ========================================================================== */
+
+/* ► DESKTOP (>= 841px) — keep split hero + left author card + small story art */
+@media (min-width: 841px){
+  /* override any earlier mobile rules */
+  .hero-split{ grid-template-columns:minmax(250px,320px) 1px 1fr !important; padding:22px !important; }
+  .hero-divider{ display:block !important; }
   .author-card--desktop{ display:flex !important; }
   .author-card--mobile{ display:none !important; }
 
-  /* Story: two-column, small illustrations */
-  .story-row{ grid-template-columns: 78% 22%; }
-  .story-row.rev{ grid-template-columns: 22% 78%; }
-  .story-img-wrap{ align-items:flex-start; }
+  .label-desktop{ display:inline !important; }
+  .label-mobile{ display:none !important; }
+
+  .story-row{ grid-template-columns: 78% 22% !important; }
+  .story-row.rev{ grid-template-columns: 22% 78% !important; }
+  .story-img-wrap{ align-items:flex-start !important; }
   .story-img,
   .story-img-wrap > img{
     max-width: 200px !important;
-    width: 100%;
+    width: 100% !important;
     height: auto !important;
   }
 
   .hero-screenshot{ width:560px; max-width:92%; }
 }
 
-/* Compact / mobile (<= 980px) — stacked layout */
-@media (max-width: 980px){
+/* ► COMPACT / MOBILE (<= 840px) — stacked */
+@media (max-width: 840px){
   .top-nav{ padding:10px 10px; flex-direction:column; align-items:center; gap:8px; }
   .top-nav .brand{ font-size:1.35rem; text-align:center; width:100%; }
   .top-nav__right{ width:100%; display:flex; gap:2px; justify-content:space-between; }
-  .label-desktop{ display:none; } .label-mobile{ display:inline; }
+  .label-desktop{ display:none !important; } 
+  .label-mobile{ display:inline !important; }
 
-  .hero-split{ grid-template-columns:1fr; padding:18px 14px 20px; }
-  .hero-divider{ display:none; }
+  .hero-split{ grid-template-columns:1fr !important; padding:18px 14px 20px !important; }
+  .hero-divider{ display:none !important; }
   .author-card--desktop{ display:none !important; }
   .author-card--mobile{ display:block !important; }
   .author-card--mobile .author-card__photo{
@@ -205,14 +213,14 @@ pre,code{ background:#efe6df; border:1px solid var(--card-border); border-radius
   .hero-actions{ gap:0 8px; margin:14px 0; }
   .hero-screenshot{ width:95%; max-width:690px; }
 
-  .story-row, .story-row.rev{ grid-template-columns:1fr; }
+  .story-row, .story-row.rev{ grid-template-columns:1fr !important; }
   .story-row .story-copy{ order:1; }
   .story-row .story-img-wrap{
     order:2; align-self:center; padding:10px 0 12px; justify-content:center;
   }
   .story-img,
   .story-img-wrap > img{
-    width:100%;
+    width:100% !important;
     max-width:clamp(220px, 80vw, 360px) !important;
     height:auto !important;
     margin:0 auto;

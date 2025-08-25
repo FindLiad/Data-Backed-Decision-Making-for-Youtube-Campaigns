@@ -29,8 +29,8 @@
     {% endif %}
 
     <!-- Cayman first, then overrides -->
-    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css?v=mocha10" />
-    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/custom.css?v=mocha10" />
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css?v=mocha11" />
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/custom.css?v=mocha11" />
   </head>
   <body>
 
@@ -84,9 +84,6 @@
 
         <div class="hero-main__welcome">{{ site.hero_welcome | default: 'Welcome!' }}</div>
 
-        {% comment %}
-        The tagline’s width is auto-matched to the H1 below via the tiny script at the bottom.
-        {% endcomment %}
         {% if site.hero_tagline or site.description %}
           <p class="hero-main__tagline" id="heroTagline">{{ site.hero_tagline | default: site.description }}</p>
         {% endif %}
@@ -144,5 +141,5 @@
     </script>
   </body>
 </html>
- 
+
 
